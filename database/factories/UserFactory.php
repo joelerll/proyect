@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
-use Illuminate\Support\Str;
+use App\UsersType;
 use Faker\Generator as Faker;
 
 /*
@@ -18,10 +18,11 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'names' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'users_types_id' => $faker->numberBetween(1, App\UsersType::count()),
+        'password' => '$2y$10$bOPjpZHRfESwY71NEXse5.MzGdCInhqWWKDgsJI0LmvktX5dFCWKe', // password
+        'restore_token' => null,
+        'restore_token_date_limit' => null
     ];
 });
