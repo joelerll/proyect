@@ -10,4 +10,8 @@ class Course extends Model
     {
         return $this->belongsToMany('App\User', 'course_user')->withPivot('score');
     }
+    public function course_user()
+    {
+        return $this->hasMany('App\CourseUser');
+    }
 }

@@ -50,22 +50,23 @@ class CoursesController extends Controller
 
     public function revenue()
     {
-        $id  = request('id') ;
-        // $Course->price
+        $id  = request('id');
+        $clientId = 1;
+
         $Course = \App\Course::where('id', '=', $id)->first();
-        $CourseUser = \App\CourseUser::where('course_id', '=', $id)->get();
 
-        $total_revenue =  sizeof($CourseUser) * $Course->price;
+        $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
+            $query->where('users_types_id', $clientId);
+        })->where('course_id', '=', $id)->get();
 
-        $fromDate = Carbon::now()->subMonth()->startOfMonth()->toDateString();
-        $tillDate = Carbon::now()->subMonth()->endOfMonth()->toDateString();
+        $revenueLastMonth = \App\CourseUser::whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->toDateString(),
+            Carbon::now()->endOfMonth()->toDateString(),
+        ])->whereHas('user', function($query) use ($clientId) {
+            $query->where('users_types_id', $clientId);
+        })->where('course_id', '=', $id)->get();
 
-        // $revenueLastMonth = \App\CourseUser::whereBetween(DB::raw('date(created_at)'), [$fromDate, $tillDate])->get();
-        // $revenueLastMonth = \App\CourseUser::whereBetween('created_at', [
-        //     Carbon::now()->subMonth()->startOfMonth()->toDateString(),
-        //     Carbon::now()->subMonth()->endOfMonth()->toDateString(),
-        // ]);
-        return response()->json(['month_revenue' => -1, 'total_revenue' => $total_revenue]);
+        return response()->json(['month_revenue' => sizeof($revenueLastMonth) * $Course->price, 'total_revenue' => sizeof($CourseUser) * $Course->price]);
     }
 
     // estudiantes get all
