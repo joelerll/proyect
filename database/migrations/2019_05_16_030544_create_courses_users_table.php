@@ -13,12 +13,12 @@ class CreateCoursesUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_users', function (Blueprint $table) {
+        Schema::create('course_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('courses_id');
-            $table->foreign('courses_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('score')->default(false);
             $table->text('scoreText');
             $table->boolean('active');
@@ -33,6 +33,6 @@ class CreateCoursesUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_users');
+        Schema::dropIfExists('course_user');
     }
 }

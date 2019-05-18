@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use JWTAuth;
 use Illuminate\Http\Request;
-use App\User;
 
 class CoursesController extends Controller
 {
@@ -19,14 +18,25 @@ class CoursesController extends Controller
         if ($User->users_types_id != 2) {
             return response()->json(['error' => 'no puede ver esto']);
         }
-        // return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => 4.6, 'courses_available' => 5, 'unanswered_questions' => 4]);
-        return response()->json();
-    }
 
-    // get courseId score
-    public function courseScore()
-    {
-        return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => 4.6, 'courses_available' => 5, 'unanswered_questions' => 4]);
+        // get all users
+        $User = \App\User::where('id', '=', $User->id)->with('courses')->get();
+
+        $courses =  array();
+        foreach ($User[0]->courses as $course) {
+            $Course = \App\CourseUser::where('course_id', '=', $course->id)->get();
+
+            // calculate score
+            $scoreTotal = 0;
+            foreach ($Course as $courseTotal) {
+                $scoreTotal = $courseTotal->score + $scoreTotal;
+            }
+            $scoreTotal = ceil($scoreTotal/sizeof($Course));
+
+            $myObj = array('name' => $course->name, 'average_score' => $scoreTotal, 'price' => $course->price, 'image' => $course->image);
+            array_push($courses, $myObj);
+        }
+        return response()->json($courses);
     }
 
     // get month gananacias y ganacias totales
