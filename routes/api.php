@@ -20,3 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('login', 'AuthController@login');
 Route::post('logout', 'AuthController@logout');
 Route::post('me', 'AuthController@me');
+Route::post('recover_password_send', 'AuthController@recoverPasswordSend');
+Route::post('recover_password', 'AuthController@recoverPassword');
+
+// Tutor endpoints
+Route::get('tutor/statistics', 'TutorController@statistics');
+Route::get('tutor/courses', 'TutorController@courses');
+
+Route::get('courses', 'CoursesController@getAllByUser');
+Route::get('courses/{id}/score', 'CoursesController@courseScore');
+Route::get('courses/{id}/revenue', 'CoursesController@courseScore');
+

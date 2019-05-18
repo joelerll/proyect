@@ -5,13 +5,19 @@ use Log;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\DB;
 use Validator;
+use Illuminate\Support\Facades\Hash;
+use App\Mail\MailNotify;
+use Mail;
+use App\User;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt.auth', ['except' => ['login']]);
+        $this->middleware('jwt.auth', ['except' => ['login', 'recoverPasswordSend', 'recoverPassword']]);
     }
 
     public function login()
@@ -30,14 +36,47 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    // public function refresh()
-    // {
-    //     return $this->respondWithToken(auth()->refresh());
-    // }
-
     public function me()
     {
         return response()->json(auth()->user());
+    }
+
+    public function recoverPasswordSend(User $User) {
+        $email = request(['email']);
+        $user = $User->where('email', $email)->first();
+
+        if (!$user) {
+            return response()->json(['message' => "This user doesn't exist", 'success' => false]);
+        }
+
+        $token_id = Str::random(32);
+        Mail::to($user)->send(new MailNotify($user, $token_id));
+
+        if (Mail::failures()) {
+           return response()->json(['message' => 'Sorry! Please try again latter', 'success' => false]);
+        }
+        $new_time = date("Y-m-d H:i:s", strtotime('+5 hours'));
+        $User->where('email', $email)->update(['restore_token' => $token_id, 'restore_token_date_limit' => $new_time]);
+        return  response()->json(['message' => 'Great! Successfully send in your mail', 'success' => true]);
+    }
+
+    public function recoverPassword(User $User, Request $request) {
+        // $validate = $request->validate([
+        //     'password' => 'required',
+        // ]);
+
+        // if (!$validate) {
+        //     return response()->json(['message' => 'Password not empty', 'success' => false]);
+        // }
+        $data = request(['password', 'token']);
+        error_log($data['token']);
+        $wasUpdated = $User->where('restore_token', $data['token'])->update(['password' => Hash::make($data['password'])]);
+        error_log($wasUpdated);
+        if (!$wasUpdated) {
+            return response()->json(['message' => 'The token is invalid', 'success' => false]);
+        }
+
+        return response()->json(['message' => 'Password validate', 'success' => true]);
     }
 
     protected function respondWithToken($token)

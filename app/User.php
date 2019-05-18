@@ -29,7 +29,7 @@ class User extends Model implements JWTSubject, AuthContract
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'restore_token',
     ];
 
     /**
@@ -63,5 +63,10 @@ class User extends Model implements JWTSubject, AuthContract
             'email'=> $this->email,
             'type' => $this->user_type()->type
         ];
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Course');
     }
 }

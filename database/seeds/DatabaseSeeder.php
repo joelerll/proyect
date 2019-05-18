@@ -15,5 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->command->info('UsersType table seeded!');
         $this->call(Users::class);
         $this->command->info('User table seeded!');
+        $this->call(Courses::class);
+        $this->command->info('Courses table seeded!');
+        $this->call(CoursesUsers::class);
+        $this->command->info('CoursesUsers table seeded!');
     }
 }
