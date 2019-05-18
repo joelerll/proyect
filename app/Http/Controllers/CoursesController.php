@@ -69,11 +69,22 @@ class CoursesController extends Controller
         return response()->json(['month_revenue' => sizeof($revenueLastMonth) * $Course->price, 'total_revenue' => sizeof($CourseUser) * $Course->price]);
     }
 
-    // estudiantes get all
-    // estudiantes nuevos mes
     public function students()
     {
-        return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => 4.6, 'courses_available' => 5, 'unanswered_questions' => 4]);
+        $id  = request('id');
+        $clientId = 1;
+        $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
+            $query->where('users_types_id', $clientId);
+        })->where('course_id', '=', $id)->get();
+
+        $revenueLastMonth = \App\CourseUser::whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->toDateString(),
+            Carbon::now()->endOfMonth()->toDateString(),
+        ])->whereHas('user', function($query) use ($clientId) {
+            $query->where('users_types_id', $clientId);
+        })->where('course_id', '=', $id)->get();
+
+        return response()->json(['total_students' => sizeof($CourseUser), 'total_student_month' => sizeof($revenueLastMonth)]);
     }
 
     public function questions()
