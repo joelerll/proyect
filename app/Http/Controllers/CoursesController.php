@@ -48,6 +48,7 @@ class CoursesController extends Controller
         return response()->json($courses);
     }
 
+    // FIXME: puede obtener de otros cursos
     public function revenue()
     {
         $id  = request('id');
@@ -94,12 +95,23 @@ class CoursesController extends Controller
 
         $questionsAnswered = \App\Question::whereHas('answers')->where('course_id', $id)->get();
 
-        return response()->json(['questions_without_answered' => sizeof($questionsAnswered), 'questions' => $questions]);
+        return response()->json(['questions_without_answer' => sizeof($questionsAnswered), 'questions' => $questions]);
     }
 
     public function statistics()
     {
-        return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => 4.6, 'courses_available' => 5, 'unanswered_questions' => 4]);
+        $user_id = auth()->user()->id;
+        // total_students. Obtener todos los cursos, con estos obtener todos los usuarios tipo 1
+        // total_revenue. Obtener todos los cursos, obtener todos lo students de ese curso, por cada curso multiplicar el price
+        // average_score. Obtener todos los cursos, obtener todos los students tipo 1 y sacar un promedio
+        // courses_available
+        // unanswered_questions
+
+        // $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
+        //     $query->where('users_types_id', $clientId);
+        // })->where('course_id', '=', $id)->get();
+        $courses = \App\User::with('courses')->where('id', $user_id)->first()->courses;
+        return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => $courses, 'courses_available' => 5, 'unanswered_questions' => 4]);
     }
 
     // questions model

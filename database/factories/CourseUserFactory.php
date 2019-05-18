@@ -11,6 +11,8 @@ $factory->define(CourseUser::class, function (Faker $faker) {
         'user_id' => \App\User::inRandomOrder()->value('id'),
         'score' => $faker->numberBetween($min = 0, $max = 5) ,
         'scoreText' => $faker->unique()->sentence($nbWords = 6, $variableNbWords = true),
-        'active' => true
+        'active' => true,
+        'created_at' => $faker->dateTimeBetween($startDate = '-2 month', $endDate = 'now', $timezone = null),
+        'updated_at' => $faker->dateTimeBetween($startDate = '-2 month', $endDate = 'now', $timezone = null)
     ];
 });

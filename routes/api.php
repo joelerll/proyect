@@ -31,5 +31,6 @@ Route::get('courses', 'CoursesController@getAllByUser');
 Route::get('courses/revenue/{id}', 'CoursesController@revenue');
 Route::get('courses/students/{id}', 'CoursesController@students');
 Route::get('courses/questions/{id}', 'CoursesController@questions');
+Route::get('courses/statistics/{id}', 'CoursesController@statistics');
 // Route::get('courses/{id}/revenue', 'CoursesController@courseScore');
 
