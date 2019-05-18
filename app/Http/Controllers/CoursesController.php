@@ -87,12 +87,17 @@ class CoursesController extends Controller
         return response()->json(['total_students' => sizeof($CourseUser), 'total_student_month' => sizeof($revenueLastMonth)]);
     }
 
-    public function statistics()
+    public function questions()
     {
-        return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => 4.6, 'courses_available' => 5, 'unanswered_questions' => 4]);
+        $id  = request('id');
+        $questions = \App\Question::where('course_id', 2)->with('answers')->get();
+
+        $questionsAnswered = \App\Question::whereHas('answers')->where('course_id', $id)->get();
+
+        return response()->json(['questions_without_answered' => sizeof($questionsAnswered), 'questions' => $questions]);
     }
 
-    public function questions()
+    public function statistics()
     {
         return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => 4.6, 'courses_available' => 5, 'unanswered_questions' => 4]);
     }

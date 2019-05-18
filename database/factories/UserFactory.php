@@ -20,7 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'names' => $faker->unique()->name,
         'email' => $faker->unique()->safeEmail,
-        'users_types_id' => $faker->numberBetween(1, App\UsersType::count()),
+        'users_types_id' => \App\UsersType::inRandomOrder()->value('id'),
         'password' => '$2y$10$bOPjpZHRfESwY71NEXse5.MzGdCInhqWWKDgsJI0LmvktX5dFCWKe', // password
         'restore_token' => null,
         'restore_token_date_limit' => null
