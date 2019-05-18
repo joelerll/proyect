@@ -28,6 +28,7 @@ Route::get('tutor/statistics', 'TutorController@statistics');
 Route::get('tutor/courses', 'TutorController@courses');
 
 Route::get('courses', 'CoursesController@getAllByUser');
-Route::get('courses/{id}/score', 'CoursesController@courseScore');
-Route::get('courses/{id}/revenue', 'CoursesController@courseScore');
+Route::get('courses/revenue/{id}', 'CoursesController@revenue');
+Route::get('courses/students/{id}', 'CoursesController@students');
+// Route::get('courses/{id}/revenue', 'CoursesController@courseScore');
 

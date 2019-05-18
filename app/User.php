@@ -70,5 +70,11 @@ class User extends Model implements JWTSubject, AuthContract
         // return $this->belongsToMany('App\Course', 'course_users', 'courses_id', 'users_id');
         return $this->belongsToMany('App\Course', 'course_user');
     }
+
+    public function coursesClients()
+    {
+        // return $this->belongsToMany('App\Course', 'course_users', 'courses_id', 'users_id');
+        return $this->belongsToMany('App\Course', 'course_user');
+    }
 }
 
