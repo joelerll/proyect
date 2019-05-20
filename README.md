@@ -25,7 +25,7 @@ _Login Api_
 - [x] Logout
 - [x] Send email recover password
 - [x] Recover Password 
-- [] Register
+- [x] Register
 
 _Tutor Dashboard_
 - [] Statistics
