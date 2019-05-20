@@ -23,14 +23,19 @@ Route::post('me', 'AuthController@me');
 Route::post('recover_password_send', 'AuthController@recoverPasswordSend');
 Route::post('recover_password', 'AuthController@recoverPassword');
 
-// Tutor endpoints
-Route::get('tutor/statistics', 'TutorController@statistics');
-Route::get('tutor/courses', 'TutorController@courses');
+// Tutor endpoints profile
+Route::get('tutor/courses', 'CoursesController@getAllByUser');
+Route::get('tutor/courses/revenue/{id}', 'CoursesController@revenue');
+Route::get('tutor/courses/students/{id}', 'CoursesController@students');
+Route::get('tutor/courses/questions/{id}', 'CoursesController@questions');
+Route::get('tutor/courses/statistics/{id}', 'CoursesController@statistics');
 
-Route::get('courses', 'CoursesController@getAllByUser');
-Route::get('courses/revenue/{id}', 'CoursesController@revenue');
-Route::get('courses/students/{id}', 'CoursesController@students');
-Route::get('courses/questions/{id}', 'CoursesController@questions');
-Route::get('courses/statistics/{id}', 'CoursesController@statistics');
-// Route::get('courses/{id}/revenue', 'CoursesController@courseScore');
+// #### Tutor endpoints
+Route::get('tutor/profile', 'TutorController@get_profile');
+Route::post('tutor/profile', 'TutorController@edit_profile');
+
+Route::get('tutor/bank_info', 'TutorController@get_bank_info');
+Route::post('tutor/bank_info', 'TutorController@edit_bank_info');
+
+Route::get('tutor/payments', 'TutorController@payments');
 

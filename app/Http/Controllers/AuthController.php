@@ -61,13 +61,6 @@ class AuthController extends Controller
     }
 
     public function recoverPassword(User $User, Request $request) {
-        // $validate = $request->validate([
-        //     'password' => 'required',
-        // ]);
-
-        // if (!$validate) {
-        //     return response()->json(['message' => 'Password not empty', 'success' => false]);
-        // }
         $data = request(['password', 'token']);
         error_log($data['token']);
         $wasUpdated = $User->where('restore_token', $data['token'])->update(['password' => Hash::make($data['password'])]);
@@ -76,7 +69,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'The token is invalid', 'success' => false]);
         }
 
-        return response()->json(['message' => 'Password validate', 'success' => true]);
+        return response()->json(['message' => 'Password was successfully updated', 'success' => true]);
     }
 
     protected function respondWithToken($token)

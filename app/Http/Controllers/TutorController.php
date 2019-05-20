@@ -15,4 +15,26 @@ class TutorController extends Controller
         // unanswered_questions
         return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => 4.6, 'courses_available' => 5, 'unanswered_questions' => 4]);
     }
+
+    public function get_profile() {
+
+    }
+
+    public function  edit_profile() {
+
+    }
+
+    public function  get_bank_info() {
+
+    }
+
+
+    public function edit_bank_info() {
+
+    }
+
+
+    public function payments() {
+
+    }
 }
