@@ -25,7 +25,7 @@ _Login Api_
 - [x] Logout
 - [x] Send email recover password
 - [x] Recover Password 
-
+- [] Register
 
 _Tutor Dashboard_
 - [] Statistics
@@ -44,3 +44,13 @@ _Tutor Profile_
 _Client dashboard_
 
 _Client profile_
+
+- [] calificar curso
+- [] realizar pregunta
+
+- [] cursos de cliente dependiendo de las categorias que escogio y si estan en oferta
+- [] Cursos api por categorias
+- [] Categorias api
+- [] recomendados para ti
+- [] destacados comuni
+- [] 

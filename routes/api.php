@@ -23,6 +23,9 @@ Route::post('me', 'AuthController@me');
 Route::post('recover_password_send', 'AuthController@recoverPasswordSend');
 Route::post('recover_password', 'AuthController@recoverPassword');
 
+// User Endpoints
+Route::post('user/register', 'UserController@create');
+
 // Tutor endpoints profile
 Route::get('tutor/courses', 'CoursesController@getAllByUser');
 Route::get('tutor/courses/revenue/{id}', 'CoursesController@revenue');
