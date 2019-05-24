@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersType::class);
-        $this->command->info('UsersType table seeded!');
+        $this->call(UserType::class);
+        $this->command->info('UserTypes table seeded!');
         $this->call(Users::class);
         $this->command->info('User table seeded!');
         $this->call(Courses::class);
@@ -23,5 +23,11 @@ class DatabaseSeeder extends Seeder
         $this->command->info('Questions table seeded!');
         $this->call(Answers::class);
         $this->command->info('Answers table seeded!');
+        $this->call(Scores::class);
+        $this->command->info('Scores table seeded!');
+        $this->call(UserExtraInfo::class);
+        $this->command->info('UserExtraInfo table seeded!');
+        $this->call(UserBankInfo::class);
+        $this->command->info('UserBankInfo table seeded!');
     }
 }

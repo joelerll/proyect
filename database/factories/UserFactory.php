@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
-use App\UsersType;
+use App\UserType;
 use Faker\Generator as Faker;
 
 /*
@@ -21,7 +21,7 @@ $factory->define(User::class, function (Faker $faker) {
         'names' => $faker->unique()->name,
         'surnames' => $faker->unique()->name,
         'email' => $faker->unique()->safeEmail,
-        'users_types_id' => \App\UsersType::inRandomOrder()->value('id'),
+        'user_type_id' => \App\UserType::inRandomOrder()->value('id'),
         'password' => '$2y$10$bOPjpZHRfESwY71NEXse5.MzGdCInhqWWKDgsJI0LmvktX5dFCWKe', // password
         'restore_token' => null,
         'restore_token_date_limit' => null

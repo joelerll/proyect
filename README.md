@@ -22,14 +22,15 @@ _Login Api_
 -   [x] Logout
 -   [x] Send email recover password
 -   [x] Recover Password
+    -   [ ] Issue: validar la fecha limite de token valido
 -   [x] Register
 
 _Tutor Dashboard_
 
 -   [ ] Statistics
--   [x] Get all courses by tutor
--   [x] Obtener las ganancias de por curso
--   [x] Obtener los estudiantes por curso
+-   [ ] Get all courses by tutor
+-   [ ] Obtener las ganancias de por curso
+-   [ ] Obtener los estudiantes por curso
 -   [x] Obtener las preguntas por curso
 
 _Tutor Profile_
@@ -53,3 +54,8 @@ _Client profile_
 -   [ ] recomendados para ti
 -   [ ] destacados comuni
 -   [ ]
+
+
+### Issues
+
+- [ ] Sigue devolviendo la pagina 404 en la api

@@ -18,7 +18,7 @@ class CoursesController extends Controller
     {
         $User = auth()->user();
         // fixme protect api
-        if ($User->users_types_id != 2) {
+        if ($User->user_type_id != 2) {
             return response()->json(['error' => 'no puede ver esto']);
         }
 
@@ -31,7 +31,7 @@ class CoursesController extends Controller
             $scoreTotal = 0;
             $count = 0;
             foreach ($Course->users as $courseTotal) {
-                if ($courseTotal->users_types_id == 2) {
+                if ($courseTotal->user_type_id == 2) {
                     $scoreTotal = $courseTotal->pivot->score + $scoreTotal;
                     $count = $count + 1;
                 }
@@ -57,14 +57,14 @@ class CoursesController extends Controller
         $Course = \App\Course::where('id', '=', $id)->first();
 
         $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
-            $query->where('users_types_id', $clientId);
+            $query->where('user_type_id', $clientId);
         })->where('course_id', '=', $id)->get();
 
         $revenueLastMonth = \App\CourseUser::whereBetween('created_at', [
             Carbon::now()->startOfMonth()->toDateString(),
             Carbon::now()->endOfMonth()->toDateString(),
         ])->whereHas('user', function($query) use ($clientId) {
-            $query->where('users_types_id', $clientId);
+            $query->where('user_type_id', $clientId);
         })->where('course_id', '=', $id)->get();
 
         return response()->json(['month_revenue' => sizeof($revenueLastMonth) * $Course->price, 'total_revenue' => sizeof($CourseUser) * $Course->price]);
@@ -75,14 +75,14 @@ class CoursesController extends Controller
         $id  = request('id');
         $clientId = 1;
         $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
-            $query->where('users_types_id', $clientId);
+            $query->where('user_type_id', $clientId);
         })->where('course_id', '=', $id)->get();
 
         $revenueLastMonth = \App\CourseUser::whereBetween('created_at', [
             Carbon::now()->startOfMonth()->toDateString(),
             Carbon::now()->endOfMonth()->toDateString(),
         ])->whereHas('user', function($query) use ($clientId) {
-            $query->where('users_types_id', $clientId);
+            $query->where('user_type_id', $clientId);
         })->where('course_id', '=', $id)->get();
 
         return response()->json(['total_students' => sizeof($CourseUser), 'total_student_month' => sizeof($revenueLastMonth)]);
@@ -91,11 +91,11 @@ class CoursesController extends Controller
     public function questions()
     {
         $id  = request('id');
-        $questions = \App\Question::where('course_id', 2)->with('answers')->get();
+        $questions = \App\Question::where('course_id', $id)->with('answers')->get();
 
         $questionsAnswered = \App\Question::whereHas('answers')->where('course_id', $id)->get();
 
-        return response()->json(['questions_without_answer' => sizeof($questionsAnswered), 'questions' => $questions]);
+        return response()->json(['questions_without_answer' => sizeof($questions) - sizeof($questionsAnswered), 'questions' => $questions]);
     }
 
     public function statistics()
@@ -108,7 +108,7 @@ class CoursesController extends Controller
         // unanswered_questions
 
         // $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
-        //     $query->where('users_types_id', $clientId);
+        //     $query->where('user_type_id', $clientId);
         // })->where('course_id', '=', $id)->get();
         $courses = \App\User::with('courses')->where('id', $user_id)->first()->courses;
         return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => $courses, 'courses_available' => 5, 'unanswered_questions' => 4]);

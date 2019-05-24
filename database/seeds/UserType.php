@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UsersType extends Seeder
+class UserType extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class UsersType extends Seeder
      */
     public function run()
     {
-        factory(App\UsersType::class, 3)->create();
+        factory(App\UserType::class, 3)->create();
         $this->command->info("Creating Users Type");
     }
 }

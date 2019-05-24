@@ -21,7 +21,7 @@ class UserController extends Controller
         $user->password = Hash::make($bodyContent->password);
         $user->email = $bodyContent->email;
         $user->names = $bodyContent->names;
-        $user->users_types_id = 1;
+        $user->user_type_id = 1;
         $user->surname = $bodyContent->surnames;
         $user->save();
         return response()->json($bodyContent);

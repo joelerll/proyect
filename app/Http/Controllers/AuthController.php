@@ -72,7 +72,7 @@ class AuthController extends Controller
     //    }
 
         if (empty($user)) {
-            return response()->json(['message' => 'User do not exist', 'success' => false]);
+            return response()->json(['message' => 'User do not exist with that token', 'success' => false]);
         }
 
         $token = $body['token'];

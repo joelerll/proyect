@@ -1,10 +1,10 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\UsersType;
+use App\UserType;
 use Faker\Generator as Faker;
 
-$factory->define(UsersType::class, function (Faker $faker) {
+$factory->define(UserType::class, function (Faker $faker) {
     static $order = 0;
     $array = [
         'user',

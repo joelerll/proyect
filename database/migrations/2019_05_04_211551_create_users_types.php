@@ -13,7 +13,7 @@ class CreateUsersTypes extends Migration
      */
     public function up()
     {
-        Schema::create('users_types', function (Blueprint $table) {
+        Schema::create('user_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->enum('type', ['user', 'tutor', 'admin']);
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateUsersTypes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_types');
+        Schema::dropIfExists('user_types');
     }
 }

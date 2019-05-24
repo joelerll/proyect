@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthContract;
 use Illuminate\Database\Eloquent\Model;
-use App\UsersType;
+use App\UserType;
 
 class User extends Model implements JWTSubject, AuthContract
 {
@@ -20,7 +20,7 @@ class User extends Model implements JWTSubject, AuthContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'restore_token',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -41,19 +41,10 @@ class User extends Model implements JWTSubject, AuthContract
         'restore_token_date_limit' => 'timestamp',
     ];
 
+    // jwt config
     public function getJWTIdentifier()
     {
         return $this->getKey();
-    }
-
-    // public function type()
-    // {
-    //     return $this->belongsTo('App\UsersType', 'users_types_id', 'id');
-    // }
-
-    public function user_type() {
-        return  UsersType::where('id',$this->users_types_id)->first();
-        // return !is_null($this->type()->where('users_types_id', $user->users_types_id)->first());
     }
 
     public function getJWTCustomClaims()
@@ -65,9 +56,14 @@ class User extends Model implements JWTSubject, AuthContract
         ];
     }
 
+    // custom
+    public function user_type() {
+        return  UserType::where('id',$this->user_type_id)->first();
+    }
+
+    // relations
     public function courses()
     {
-        // return $this->belongsToMany('App\Course', 'course_users', 'courses_id', 'users_id');
         return $this->belongsToMany('App\Course', 'course_user');
     }
 
@@ -79,6 +75,11 @@ class User extends Model implements JWTSubject, AuthContract
     public function answers()
     {
         return $this->morphMany('App\Answer');
+    }
+
+    public function extra_info()
+    {
+        return $this->hasOne('App\UserExtraInfo');
     }
 }
 

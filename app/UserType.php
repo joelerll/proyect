@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UsersType extends Model
+class UserType extends Model
 {
     /**
      * The attributes that are mass assignable.
