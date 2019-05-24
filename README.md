@@ -30,7 +30,7 @@ _Tutor Dashboard_
 -   [ ] Statistics
 -   [ ] Get all courses by tutor
 -   [ ] Obtener las ganancias de por curso
--   [ ] Obtener los estudiantes por curso
+-   [x] Obtener los estudiantes por curso
 -   [x] Obtener las preguntas por curso
 
 _Tutor Profile_

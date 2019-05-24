@@ -72,8 +72,9 @@ class CoursesController extends Controller
 
     public function students()
     {
-        $id  = request('id');
         $clientId = 1;
+        $id  = request('id');
+
         $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
             $query->where('user_type_id', $clientId);
         })->where('course_id', '=', $id)->get();
