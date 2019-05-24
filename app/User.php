@@ -20,7 +20,7 @@ class User extends Model implements JWTSubject, AuthContract
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'restore_token',
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Model implements JWTSubject, AuthContract
      * @var array
      */
     protected $hidden = [
-        'password', 'restore_token',
+        'password',
     ];
 
     /**
@@ -38,7 +38,7 @@ class User extends Model implements JWTSubject, AuthContract
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'restore_token_date_limit' => 'timestamp',
     ];
 
     public function getJWTIdentifier()
