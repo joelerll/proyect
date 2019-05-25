@@ -27,7 +27,7 @@ _Login Api_
 
 _Tutor Dashboard_
 
--   [ ] Statistics
+-   [x] Statistics
 -   [x] Get all courses by tutor
 -   [x] Obtener las ganancias de por curso
 -   [x] Obtener los estudiantes por curso
@@ -59,3 +59,4 @@ _Client profile_
 ### Issues
 
 - [ ] Sigue devolviendo la pagina 404 en la api
+- [ ] Mejorar mensajes de error y mensajes de validaciones
