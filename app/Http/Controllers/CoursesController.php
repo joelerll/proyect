@@ -5,6 +5,7 @@ use JWTAuth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use  Illuminate\Support\Collection;
 
 class CoursesController extends Controller
 {
@@ -96,7 +97,12 @@ class CoursesController extends Controller
                 ->where('users.user_type_id', $user_type)
                 ->first()->users;
 
-        $total_revenue = -1;
+        $total_revenue =  \App\Course::select(DB::raw('count(*) * courses.price AS users'))
+        ->join('course_user', 'courses.id', '=', 'course_user.course_id')
+        ->join('users', 'users.id', '=', 'course_user.user_id')
+        ->where('users.user_type_id', $user_type)
+        ->whereIn('courses.id', $courses_user)
+        ->groupBy('courses.id')->pluck('users');
 
         $average_score = \App\Course::select(DB::raw('avg(scores.score) AS average_score'))
                 ->join('scores', 'scores.course_id', '=', 'courses.id')
@@ -109,9 +115,6 @@ class CoursesController extends Controller
         $questionsAnswered = \App\Question::whereHas('answers')->whereIn('course_id', $courses_user)->get();
         $unanswered_questions = sizeof($questions) - sizeof($questionsAnswered);
 
-        return response()->json(['total_students' => $total_students, 'total_revenue' =>  $total_revenue, 'average_score' => $average_score, 'courses_available' =>  $courses_available, 'unanswered_questions' =>  $unanswered_questions]);
+        return response()->json(['total_students' => $total_students, 'total_revenue' =>  collect($total_revenue)->sum(), 'average_score' => $average_score, 'courses_available' =>  $courses_available, 'unanswered_questions' =>  $unanswered_questions]);
     }
-
-    // questions model
-    // preguntas sin responder
 }
