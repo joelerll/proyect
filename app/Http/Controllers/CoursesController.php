@@ -13,42 +13,27 @@ class CoursesController extends Controller
         $this->middleware('jwt.auth', ['except' => []]);
     }
 
-    // get courses by user
     public function getAllByUser()
     {
+        $user_type = 2;
         $User = auth()->user();
-        // fixme protect api
-        if ($User->user_type_id != 2) {
-            return response()->json(['error' => 'no puede ver esto']);
+        if ($User->user_type_id != $user_type) {
+            return response()->json(['error' => 'You can not view this']);
         }
 
         // get all courses of this user
-        $User = \App\User::find($User->id)->with('courses')->first();
+        $Courses_user = \App\CourseUser::where('user_id', '=', $User->id)->pluck('course_id');
 
-        $courses =  array();
-        foreach ($User->courses as $course) {
-            $Course = \App\Course::where('id', $course->id)->with('users')->first();
-            $scoreTotal = 0;
-            $count = 0;
-            foreach ($Course->users as $courseTotal) {
-                if ($courseTotal->user_type_id == 2) {
-                    $scoreTotal = $courseTotal->pivot->score + $scoreTotal;
-                    $count = $count + 1;
-                }
-            }
+        $Courses = \App\Course::select('courses.*', DB::raw('avg(scores.score) AS average_score'))
+                ->join('scores', 'scores.course_id', '=', 'courses.id')
+                ->groupBy('scores.course_id')
+                ->whereIn('courses.id', $Courses_user)
+                ->get();
 
-            if ($count != 0) {
-                $scoreTotal = ceil($scoreTotal/$count);
-            }
-
-            $obj = array('name' => $course->name, 'average_score' => $scoreTotal, 'price' => $course->price, 'image' => $course->image);
-            array_push($courses, $obj);
-        }
-
-        return response()->json($courses);
+        return response()->json($Courses);
     }
 
-    // FIXME: puede obtener de otros cursos
+    // FIXME: puede obtener de otros cursos el profesor
     public function revenue()
     {
         $id  = request('id');

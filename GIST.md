@@ -1,3 +1,4 @@
+->withPivot('score');
 
 // Route::group([
 //     'middleware' => 'api',

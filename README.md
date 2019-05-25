@@ -28,8 +28,8 @@ _Login Api_
 _Tutor Dashboard_
 
 -   [ ] Statistics
--   [ ] Get all courses by tutor
--   [ ] Obtener las ganancias de por curso
+-   [x] Get all courses by tutor
+-   [x] Obtener las ganancias de por curso
 -   [x] Obtener los estudiantes por curso
 -   [x] Obtener las preguntas por curso
 
