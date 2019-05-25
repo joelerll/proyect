@@ -31,7 +31,7 @@ Route::get('tutor/courses', 'CoursesController@getAllByUser');
 Route::get('tutor/courses/revenue/{id}', 'CoursesController@revenue');
 Route::get('tutor/courses/students/{id}', 'CoursesController@students');
 Route::get('tutor/courses/questions/{id}', 'CoursesController@questions');
-Route::get('tutor/courses/statistics/{id}', 'CoursesController@statistics');
+Route::get('tutor/courses/statistics', 'CoursesController@statistics');
 
 // #### Tutor endpoints
 Route::get('tutor/profile', 'TutorController@get_profile');
