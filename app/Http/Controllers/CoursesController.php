@@ -18,6 +18,7 @@ class CoursesController extends Controller
     {
         $user_type = 2;
         $User = auth()->user();
+        $user_id = auth()->user()->id;
         if ($User->user_type_id != $user_type) {
             return response()->json(['error' => 'You can not view this']);
         }
@@ -34,11 +35,18 @@ class CoursesController extends Controller
         return response()->json($Courses);
     }
 
-    // FIXME: puede obtener de otros cursos el profesor
     public function revenue()
     {
         $id  = request('id');
+        $user_id = auth()->user()->id;
         $clientId = 1;
+
+        // protect route from another tutor
+        $courses_user = \App\CourseUser::where('user_id', '=', $user_id)->pluck('course_id')->toArray();
+
+        if (!in_array($id, $courses_user)) {
+            return response()->json(['message' => 'No tiene permitido']);
+        }
 
         $Course = \App\Course::where('id', '=', $id)->first();
 
@@ -60,6 +68,14 @@ class CoursesController extends Controller
     {
         $clientId = 1;
         $id  = request('id');
+        $user_id = auth()->user()->id;
+
+        // protect route from another tutor
+        $courses_user = \App\CourseUser::where('user_id', '=', $user_id)->pluck('course_id')->toArray();
+
+        if (!in_array($id, $courses_user)) {
+            return response()->json(['message' => 'No tiene permitido']);
+        }
 
         $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
             $query->where('user_type_id', $clientId);
@@ -78,6 +94,15 @@ class CoursesController extends Controller
     public function questions()
     {
         $id  = request('id');
+        $user_id = auth()->user()->id;
+
+        // protect route from another tutor
+        $courses_user = \App\CourseUser::where('user_id', '=', $user_id)->pluck('course_id')->toArray();
+
+        if (!in_array($id, $courses_user)) {
+            return response()->json(['message' => 'No tiene permitido']);
+        }
+
         $questions = \App\Question::where('course_id', $id)->with('answers')->get();
 
         $questionsAnswered = \App\Question::whereHas('answers')->where('course_id', $id)->get();
