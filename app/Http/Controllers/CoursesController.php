@@ -87,17 +87,29 @@ class CoursesController extends Controller
     public function statistics()
     {
         $user_id = auth()->user()->id;
-        // total_students. Obtener todos los cursos, con estos obtener todos los usuarios tipo 1
-        // total_revenue. Obtener todos los cursos, obtener todos lo students de ese curso, por cada curso multiplicar el price
-        // average_score. Obtener todos los cursos, obtener todos los students tipo 1 y sacar un promedio
-        // courses_available
-        // unanswered_questions
+        $user_type = 1;
+        $courses_user = \App\CourseUser::where('user_id', '=', $user_id)->pluck('course_id');
 
-        // $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
-        //     $query->where('user_type_id', $clientId);
-        // })->where('course_id', '=', $id)->get();
-        $courses = \App\User::with('courses')->where('id', $user_id)->first()->courses;
-        return response()->json(['total_students' => 500, 'total_revenue' => 600, 'average_score' => $courses, 'courses_available' => 5, 'unanswered_questions' => 4]);
+        $total_students = \App\User::select(DB::raw('count(*) AS users'))
+                ->join('course_user', 'users.id', '=', 'course_user.user_id')
+                ->whereIn('course_user.course_id', $courses_user)
+                ->where('users.user_type_id', $user_type)
+                ->first()->users;
+
+        $total_revenue = -1;
+
+        $average_score = \App\Course::select(DB::raw('avg(scores.score) AS average_score'))
+                ->join('scores', 'scores.course_id', '=', 'courses.id')
+                ->whereIn('courses.id', $courses_user)
+                ->first()->average_score;
+        $courses_available = sizeof($courses_user);
+
+
+        $questions = \App\Question::whereIn('course_id', $courses_user)->with('answers')->get();
+        $questionsAnswered = \App\Question::whereHas('answers')->whereIn('course_id', $courses_user)->get();
+        $unanswered_questions = sizeof($questions) - sizeof($questionsAnswered);
+
+        return response()->json(['total_students' => $total_students, 'total_revenue' =>  $total_revenue, 'average_score' => $average_score, 'courses_available' =>  $courses_available, 'unanswered_questions' =>  $unanswered_questions]);
     }
 
     // questions model
