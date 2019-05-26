@@ -15,11 +15,11 @@ class CreateUserExtraInfosTable extends Migration
     {
         Schema::create('user_extra_infos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('country');
-            $table->string('document_type');
-            $table->string('dni');
-            $table->string('career');
-            $table->string('description');
+            $table->string('country')->nullable();
+            $table->string('document_type')->nullable();
+            $table->string('dni')->nullable();
+            $table->string('career')->nullable();
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

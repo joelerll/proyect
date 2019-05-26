@@ -13,6 +13,6 @@ $factory->define(UserBankInfo::class, function (Faker $faker) {
         'document_type' => $faker->randomElement($array = array ('dni','passport')),
         'dni' => $faker->unique()->dni,
         'bank_name' => $faker->unique()->sentence($nbWords = 2, $variableNbWords = true),
-        'user_bank_info_id' => \App\UserExtraInfo::inRandomOrder()->value('id'),
+        'user_id' =>  \App\User::inRandomOrder()->value('id'),
     ];
 });

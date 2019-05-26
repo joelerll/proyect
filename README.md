@@ -37,8 +37,8 @@ _Tutor Profile_
 
 -   [x] Obtener perfil
 -   [x] Editar perfil
--   [ ] Obtener informacion bancaria
--   [ ] Editar informacion bancaria
+-   [x] Obtener informacion bancaria
+-   [x] Editar informacion bancaria
 -   [ ] Obtener payments con informacion de factura
 
 
@@ -87,3 +87,4 @@ _Curso_
 
 - [ ] Sigue devolviendo la pagina 404 en la api
 - [ ] Mejorar mensajes de error y mensajes de validaciones
+- [ ] Mask credit cart number y 3 digitos credit card  

@@ -72,6 +72,11 @@ class User extends Model implements JWTSubject, AuthContract
         return $this->hasMany('App\CourseUser');
     }
 
+    public function bank()
+    {
+        return $this->belongsTo('App\UserBankInfo');
+    }
+
     public function answers()
     {
         return $this->morphMany('App\Answer');

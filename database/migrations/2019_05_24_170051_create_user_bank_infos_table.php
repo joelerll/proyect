@@ -17,12 +17,12 @@ class CreateUserBankInfosTable extends Migration
             $table->bigIncrements('id');
             $table->string('account_number');
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('document_type');
             $table->string('dni');
             $table->string('bank_name');
-            $table->unsignedBigInteger('user_bank_info_id');
-            $table->foreign('user_bank_info_id')->references('id')->on('user_extra_infos')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

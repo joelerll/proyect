@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserExtraInfo;
+use App\UserBankInfo;
 
 class TutorController extends Controller
 {
@@ -34,13 +35,29 @@ class TutorController extends Controller
         return response()->json($user);
     }
 
-    public function  get_bank_info() {
-
+    public function  create_bank_info() {
     }
 
+    public function  get_bank_info() {
+        $user_id = auth()->user()->id;
+        $BankInfo = \App\UserBankInfo::where('user_id', $user_id)->get();
+        return response()->json($BankInfo);
+    }
 
-    public function edit_bank_info() {
+    public function edit_bank_info(UserBankInfo $UserBankInfo) {
+        $user_id = auth()->user()->id;
+        $id  = request('id');
+        $account_number  = request('account_number');
+        $name  = request('name');
+        $email  = request('email');
+        $document_type  = request('document_type');
+        $dni  = request('dni');
+        $bank_name  = request('bank_name');
+        $UserBankInfo->where('user_id', $user_id)->where('id', $id)->update(['account_number' => $account_number, 'name' => $name, 'email' => $email, 'document_type' => $document_type, 'dni' => $dni, 'bank_name' => $bank_name]);
 
+        $BankInfo = $UserBankInfo->where('user_id', '=', $user_id)->where('id','=', $id)->first();
+
+        return response()->json($BankInfo);
     }
 
 

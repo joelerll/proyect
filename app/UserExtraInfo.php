@@ -10,9 +10,4 @@ class UserExtraInfo extends Model
     {
         return $this->belongsTo('App\User');
     }
-
-    public function bank_accounts()
-    {
-        return $this->hasMany('App\UserBankInfo');
-    }
 }
