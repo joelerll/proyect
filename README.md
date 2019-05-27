@@ -60,7 +60,7 @@ _Client profile_
 _Client cursos_
 -   [x] realizar pregunta
 -   [x] ver pregutas de un curso con sus respuestas
--   [0] crear una respuesta
+-   [x] crear una respuesta
 -   [ ] Progreso de curso
 -   [x] calificar curso | POST Course - score /api/score/course/42
 -   [0] ver calificacion curso
