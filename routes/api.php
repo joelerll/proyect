@@ -39,10 +39,10 @@ Route::get('tutor/payments', 'TutorController@payments');
 
 // Client Endpoints
 Route::post('client/register', 'ClientController@create');
-Route::post('client/interest', 'ClientController@attach_interests');
 
 // Interest
 Route::get('interest', 'InterestController@show');
+Route::post('interest/client', 'InterestController@attach_interests');
 
 
 // Courses
