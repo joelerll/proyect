@@ -13,7 +13,6 @@ class InterestController extends Controller
         return response()->json($Interest->get());
     }
 
-
     public function attach_interests(Request $request, User $User, Interest $Interest)
     {
         $user_id = auth()->user()->id;

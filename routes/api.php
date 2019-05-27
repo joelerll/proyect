@@ -50,3 +50,11 @@ Route::get('courses/interests', 'CoursesController@interests');
 
 // Scores
 Route::post('score/course/{id}', 'ScoreController@course');
+
+
+// Question
+Route::post('question/course/{id}', 'QuestionController@create');
+Route::get('question/course/{id}', 'QuestionController@get');
+
+// Answer
+Route::post('answer/question/{id}', 'AnswerController@create');

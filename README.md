@@ -43,7 +43,7 @@ _Tutor Profile_
 
 
 _Client post crear usuario_
--   [x] Escojer areas de interes usuario
+-   [x] Attach areas interes usuario | POST Client - attach interests /api/interest/client
 -   [x] Obtener area de interes general
 -   [x] Update interest
 
@@ -58,10 +58,12 @@ _Client profile_
 - [ ] Metodos de pagos
 
 _Client cursos_
+-   [x] realizar pregunta
+-   [x] ver pregutas de un curso con sus respuestas
+-   [0] crear una respuesta
 -   [ ] Progreso de curso
 -   [x] calificar curso | POST Course - score /api/score/course/42
 -   [0] ver calificacion curso
--   [0] realizar pregunta
 -   [0] ver preguntas por cursos con respuestas
 -   [x] ver cantidad cursos por categoria
 
