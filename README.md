@@ -50,17 +50,19 @@ _Client post crear usuario_
 _Client profile_
 
 - [ ] Mis certificaciones
-- [ ] Editar cuenta
-- [ ] Obtener cuenta
-- [ ] Editar perfil
-- [ ] Obtener perfil
+- [x] Editar cuenta
+- [x] Obtener cuenta
+- [x] Editar perfil
+- [x] Obtener perfil
 - [ ] Historial de pagos
 - [ ] Metodos de pagos
 
 _Client cursos_
 -   [ ] Progreso de curso
--   [ ] calificar curso
--   [ ] realizar pregunta
+-   [0] calificar curso
+-   [0] realizar pregunta
+-   [0] ver preguntas por cursos con respuestas
+-   [x] ver cantidad cursos por categoria
 
 _Client carrito_
 
@@ -74,9 +76,7 @@ _Client Dashbard_
 -   [ ] Verificar correo y volver a enviar correo de verificacion 
 -   [ ] Ver clases que estoy cursando
 -   [ ] cursos de cliente dependiendo de las categorias que escogio y si estan en oferta
--   [ ] Cursos api por categorias
--   [ ] Categorias api
--   [ ] mis areas de interes
+-   [0] mis areas de interes
 -   [ ] recomendados para ti
 -   [ ] destacados comuni
 

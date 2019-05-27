@@ -21,6 +21,7 @@ class CreateScores extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('score');
             $table->text('comment');
+            $table->text('title');
             $table->timestamps();
         });
     }
