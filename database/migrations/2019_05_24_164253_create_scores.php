@@ -20,8 +20,8 @@ class CreateScores extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('score');
-            $table->text('comment');
-            $table->text('title');
+            $table->text('comment')->nullable();
+            $table->text('title')->nullable();
             $table->timestamps();
         });
     }

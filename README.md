@@ -50,16 +50,17 @@ _Client post crear usuario_
 _Client profile_
 
 - [ ] Mis certificaciones
-- [x] Editar cuenta
-- [x] Obtener cuenta
-- [x] Editar perfil
-- [x] Obtener perfil
+- [0] Editar cuenta
+- [0] Obtener cuenta
+- [0] Editar perfil
+- [0] Obtener perfil
 - [ ] Historial de pagos
 - [ ] Metodos de pagos
 
 _Client cursos_
 -   [ ] Progreso de curso
--   [0] calificar curso
+-   [x] calificar curso
+-   [0] ver calificacion curso
 -   [0] realizar pregunta
 -   [0] ver preguntas por cursos con respuestas
 -   [x] ver cantidad cursos por categoria
