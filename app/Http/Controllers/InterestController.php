@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Interest;
 use App\User;
+use App\Course;
 use App\InterestUser;
 
 class InterestController extends Controller
@@ -27,5 +28,14 @@ class InterestController extends Controller
         $user_id = auth()->user()->id;
         $interests = $User->where('id', $user_id)->with('interest')->first()->interest;
         return response()->json($interests);
+    }
+
+    public function get_courses(Course $Course)
+    {
+        $courses = $Course->select('interests.name', 'interests.id', DB::raw('count(*) AS courses'))
+                ->join('course_interests', 'courses.id', 'course_interests.course_id')
+                ->join('interests', 'interests.id', 'course_interests.interest_id')
+                ->groupBy('course_interests.interest_id')->get();
+        return response()->json($courses);
     }
 }

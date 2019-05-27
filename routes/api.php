@@ -44,9 +44,7 @@ Route::post('client/register', 'ClientController@create');
 Route::get('interest', 'InterestController@show');
 Route::post('interest/client', 'InterestController@attach_interests');
 Route::get('interest/client', 'InterestController@get_client');
-
-// Courses
-Route::get('courses/interests', 'CoursesController@interests');
+Route::get('interest/course', 'InterestController@get_courses');
 
 // Scores
 Route::post('score/course/{id}', 'ScoreController@course');

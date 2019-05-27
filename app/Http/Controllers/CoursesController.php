@@ -145,13 +145,4 @@ class CoursesController extends Controller
 
         return response()->json(['total_students' => $total_students, 'total_revenue' =>  collect($total_revenue)->sum(), 'average_score' => $average_score, 'courses_available' =>  $courses_available, 'unanswered_questions' =>  $unanswered_questions]);
     }
-
-    public function interests(Course $Course)
-    {
-        $courses = $Course->select('interests.name', 'interests.id', DB::raw('count(*) AS courses'))
-                ->join('course_interests', 'courses.id', 'course_interests.course_id')
-                ->join('interests', 'interests.id', 'course_interests.interest_id')
-                ->groupBy('course_interests.interest_id')->get();
-        return response()->json($courses);
-    }
 }
