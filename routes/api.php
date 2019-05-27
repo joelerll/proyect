@@ -43,7 +43,7 @@ Route::post('client/register', 'ClientController@create');
 // Interest
 Route::get('interest', 'InterestController@show');
 Route::post('interest/client', 'InterestController@attach_interests');
-
+Route::get('interest/client', 'InterestController@get_client');
 
 // Courses
 Route::get('courses/interests', 'CoursesController@interests');

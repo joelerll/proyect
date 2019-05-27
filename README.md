@@ -64,7 +64,6 @@ _Client cursos_
 -   [ ] Progreso de curso
 -   [x] calificar curso | POST Course - score /api/score/course/42
 -   [0] ver calificacion curso
--   [0] ver preguntas por cursos con respuestas
 -   [x] ver cantidad cursos por categoria
 
 _Client carrito_
@@ -79,7 +78,7 @@ _Client Dashbard_
 -   [ ] Verificar correo y volver a enviar correo de verificacion 
 -   [ ] Ver clases que estoy cursando
 -   [ ] cursos de cliente dependiendo de las categorias que escogio y si estan en oferta
--   [0] mis areas de interes
+-   [x] mis areas de interes (areas de interes por usuario)
 -   [ ] recomendados para ti
 -   [ ] destacados comuni
 
