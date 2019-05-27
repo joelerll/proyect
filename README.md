@@ -59,7 +59,7 @@ _Client profile_
 
 _Client cursos_
 -   [ ] Progreso de curso
--   [x] calificar curso
+-   [x] calificar curso | POST Course - score /api/score/course/42
 -   [0] ver calificacion curso
 -   [0] realizar pregunta
 -   [0] ver preguntas por cursos con respuestas
@@ -83,13 +83,14 @@ _Client Dashbard_
 
 _Curso_
 
-- [ ] api tags curso (100% online, pago unico)
-- [ ] Ver info de un curso
-- [ ] Ver contenido de un curso
-- [ ] Ver preguntas y respuestas de un curso
+- [0] api tags curso (100% online, pago unico)
+- [0] Ver info de un curso
+- [0] Ver contenido de un curso
+- [0] Ver preguntas y respuestas de un curso
 
 ### Issues
 
+- [0] reordenar controller y apis
 - [ ] Sigue devolviendo la pagina 404 en la api
 - [ ] Mejorar mensajes de error y mensajes de validaciones
 - [ ] Mask credit cart number y 3 digitos credit card  

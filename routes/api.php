@@ -47,4 +47,6 @@ Route::get('interest', 'InterestController@show');
 
 // Courses
 Route::get('courses/interests', 'CoursesController@interests');
-Route::post('courses/score/{id}', 'CoursesController@score');
+
+// Scores
+Route::post('score/course/{id}', 'ScoreController@course');
