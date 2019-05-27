@@ -23,22 +23,23 @@ Route::post('me', 'AuthController@me');
 Route::post('recover_password_send', 'AuthController@recoverPasswordSend');
 Route::post('recover_password', 'AuthController@recoverPassword');
 
-// Tutor endpoints profile
+// Tutor dashboard
 Route::get('tutor/courses', 'CoursesController@getAllByUser');
 Route::get('tutor/courses/revenue/{id}', 'CoursesController@revenue');
 Route::get('tutor/courses/students/{id}', 'CoursesController@students');
 Route::get('tutor/courses/questions/{id}', 'CoursesController@questions');
 Route::get('tutor/courses/statistics', 'CoursesController@statistics');
 
-// Tutor endpoints profile
+// Tutor profile
 Route::get('tutor/profile', 'TutorController@get_profile');
 Route::put('tutor/profile', 'TutorController@edit_profile');
-
 Route::get('tutor/bank_info', 'TutorController@get_bank_info');
 Route::put('tutor/bank_info/{id}', 'TutorController@edit_bank_info');
-
 Route::get('tutor/payments', 'TutorController@payments');
-
 
 // Client Endpoints
 Route::post('client/register', 'ClientController@create');
+Route::post('client/interest', 'ClientController@attach_interests');
+
+// Interest
+Route::get('interest', 'InterestController@show');

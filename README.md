@@ -42,6 +42,11 @@ _Tutor Profile_
 -   [ ] Obtener payments con informacion de factura
 
 
+_Client post crear usuario_
+-   [x] Escojer areas de interes usuario
+-   [x] Obtener area de interes general
+-   [x] Update interest
+
 _Client profile_
 
 - [ ] Mis certificaciones
@@ -54,7 +59,6 @@ _Client profile_
 
 _Client cursos_
 -   [ ] Progreso de curso
--   [ ] Escojer areas de interes
 -   [ ] calificar curso
 -   [ ] realizar pregunta
 

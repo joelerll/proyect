@@ -86,5 +86,10 @@ class User extends Model implements JWTSubject, AuthContract
     {
         return $this->hasOne('App\UserExtraInfo');
     }
+
+    public function interest()
+    {
+        return $this->belongsToMany('App\Interest', 'interest_users', 'user_id', 'interest_id');
+    }
 }
 

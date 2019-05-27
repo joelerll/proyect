@@ -1,3 +1,10 @@
+Main difference is as below:
+
+belongsTo and belongsToMany you're telling Laravel that this table holds the foreign key that connects it to the other table
+
+hasOne and hasMany is telling Laravel that this table does not have the foreign key
+
+
 ->withPivot('score');
 
 // Route::group([
@@ -94,3 +101,37 @@
         //     $obj = array('name' => $course->name, 'average_score' => $scoreTotal, 'price' => $course->price, 'image' => $course->image);
         //     array_push($courses, $obj);
         // }
+
+
+
+ * hasOne / hasMany (1-1, 1-M)
+    -save(new or existing child)
+    -saveMany(array of models new or existing)
+    -create(array of attributes)
+    -createMany(array of arrays of attributes)
+    ---------------------------------------------------------------------------
+
+ * belongsTo (M-1, 1-1)
+    -associate(existing model)
+    ---------------------------------------------------------------------------
+
+ *  belongsToMany (M-M)
+    -save(new or existing model, array of pivot data, touch parent = true)
+    -saveMany(array of new or existing model, array of arrays with pivot ata)
+    -create(attributes, array of pivot data, touch parent = true)
+    -createMany(array of arrays of attributes, array of arrays with pivot data)
+    -attach(existing model / id, array of pivot data, touch parent = true)
+    -sync(array of ids OR ids as keys and array of pivot data as values, detach = true)
+    -updateExistingPivot(relatedId, array of pivot data, touch)
+    ---------------------------------------------------------------------------
+
+ *  morphTo (polymorphic M-1)
+    // the same as belongsTo
+    ---------------------------------------------------------------------------
+
+ *  morphOne / morphMany (polymorphic 1-M)
+    // the same as hasOne / hasMany
+    ---------------------------------------------------------------------------
+
+ *  morphedToMany /morphedByMany (polymorphic M-M)
+    // the same as belongsToMany
