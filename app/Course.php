@@ -21,4 +21,9 @@ class Course extends Model
     {
         return $this->hasMany('App\Score');
     }
+
+    public function interest()
+    {
+        return $this->belongsToMany('App\Interest');
+    }
 }

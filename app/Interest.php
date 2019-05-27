@@ -10,4 +10,9 @@ class Interest extends Model
     {
         return $this->belongsToMany('App\User', 'interest_users', 'interest_id ', 'user_id');
     }
+
+    public function course()
+    {
+        return $this->belongsToMany('App\Course');
+    }
 }
