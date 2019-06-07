@@ -38,6 +38,9 @@ Route::get('tutor/bank_info', 'TutorController@get_bank_info');
 Route::put('tutor/bank_info/{id}', 'TutorController@edit_bank_info');
 Route::get('tutor/payments', 'TutorController@payments');
 
+// Client dashboard
+// Client profile
+
 // Client Endpoints
 Route::post('client/register', 'ClientController@create');
 
