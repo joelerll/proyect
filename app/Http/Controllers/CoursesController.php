@@ -23,7 +23,7 @@ class CoursesController extends Controller
         $User = auth()->user();
         $user_id = auth()->user()->id;
         if ($User->user_type_id != $user_type) {
-            return response()->json(['error' => 'You can not view this']);
+            return response()->json(['message' => 'No tiene permisos para ver esto', "success" => false]);
         }
 
         // get all courses of this user
@@ -35,7 +35,7 @@ class CoursesController extends Controller
                 ->whereIn('courses.id', $Courses_user)
                 ->get();
 
-        return response()->json($Courses);
+        return response()->json(["success" => true, "data" => $Courses]);
     }
 
     public function revenue()
@@ -48,7 +48,7 @@ class CoursesController extends Controller
         $courses_user = \App\CourseUser::where('user_id', '=', $user_id)->pluck('course_id')->toArray();
 
         if (!in_array($id, $courses_user)) {
-            return response()->json(['message' => 'No tiene permitido']);
+            return response()->json(['message' => 'No tiene permisos para ver esto', "success" => false]);
         }
 
         $Course = \App\Course::where('id', '=', $id)->first();
@@ -64,7 +64,9 @@ class CoursesController extends Controller
             $query->where('user_type_id', $clientId);
         })->where('course_id', '=', $id)->get();
 
-        return response()->json(['month_revenue' => sizeof($revenueLastMonth) * $Course->price, 'total_revenue' => sizeof($CourseUser) * $Course->price]);
+        return response()->json(["data" => [
+            ['month_revenue' => sizeof($revenueLastMonth) * $Course->price, 'total_revenue' => sizeof($CourseUser) * $Course->price]
+        ], "success" => false]);
     }
 
     public function students()
@@ -77,7 +79,7 @@ class CoursesController extends Controller
         $courses_user = \App\CourseUser::where('user_id', '=', $user_id)->pluck('course_id')->toArray();
 
         if (!in_array($id, $courses_user)) {
-            return response()->json(['message' => 'No tiene permitido']);
+            return response()->json(['message' => 'No tiene permisos para ver esto', "success" => false]);
         }
 
         $CourseUser = \App\CourseUser::whereHas('user', function($query) use ($clientId) {
@@ -91,7 +93,9 @@ class CoursesController extends Controller
             $query->where('user_type_id', $clientId);
         })->where('course_id', '=', $id)->get();
 
-        return response()->json(['total_students' => sizeof($CourseUser), 'total_student_month' => sizeof($revenueLastMonth)]);
+        return response()->json(["data" => [
+            'total_students' => sizeof($CourseUser), 'total_student_month' => sizeof($revenueLastMonth)
+        ], "success" => true]);
     }
 
     public function questions()
@@ -103,14 +107,16 @@ class CoursesController extends Controller
         $courses_user = \App\CourseUser::where('user_id', '=', $user_id)->pluck('course_id')->toArray();
 
         if (!in_array($id, $courses_user)) {
-            return response()->json(['message' => 'No tiene permitido']);
+            return response()->json(['message' => 'No tiene permisos para ver esto', "success" => false]);
         }
 
         $questions = \App\Question::where('course_id', $id)->with('answers')->get();
 
         $questionsAnswered = \App\Question::whereHas('answers')->where('course_id', $id)->get();
 
-        return response()->json(['questions_without_answer' => sizeof($questions) - sizeof($questionsAnswered), 'questions' => $questions]);
+        return response()->json(["data" => [
+            'questions_without_answer' => sizeof($questions) - sizeof($questionsAnswered), 'questions' => $questions
+        ], "success" => true]);
     }
 
     public function statistics()
@@ -143,6 +149,8 @@ class CoursesController extends Controller
         $questionsAnswered = \App\Question::whereHas('answers')->whereIn('course_id', $courses_user)->get();
         $unanswered_questions = sizeof($questions) - sizeof($questionsAnswered);
 
-        return response()->json(['total_students' => $total_students, 'total_revenue' =>  collect($total_revenue)->sum(), 'average_score' => $average_score, 'courses_available' =>  $courses_available, 'unanswered_questions' =>  $unanswered_questions]);
+        return response()->json(["success" => true, "data" => [
+            'total_students' => $total_students, 'total_revenue' =>  collect($total_revenue)->sum(), 'average_score' => $average_score, 'courses_available' =>  $courses_available, 'unanswered_questions' =>  $unanswered_questions
+        ]]);
     }
 }
