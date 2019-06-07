@@ -23,7 +23,7 @@ _Login Api_
 -   [x] Send email recover password
 -   [x] Recover Password
     -   [ ] Issue: validar la fecha limite de token valido
--   [x] Register
+-   [x] Register // ENVIAR MAIL DE CONFIMACION CUENTA
 -   [ ] verified mail
 
 _Tutor Dashboard_
@@ -111,5 +111,6 @@ _Curso_
 
 -   [0] reordenar controller y apis
 -   [ ] Sigue devolviendo la pagina 404 en la api
+-   [ ] Try catch correo ya existente
 -   [ ] Mejorar mensajes de error y mensajes de validaciones
 -   [ ] Mask credit cart number y 3 digitos credit card

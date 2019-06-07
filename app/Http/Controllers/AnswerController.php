@@ -21,6 +21,6 @@ class AnswerController extends Controller
         $answer->user_id = $user_id;
         $answer->question_id = (int)$id;
         $answer->save();
-        return response()->json($answer);
+        return response()->json(["success" => true, "data" => $answer]);
     }
 }

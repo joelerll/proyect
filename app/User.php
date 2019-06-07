@@ -61,6 +61,11 @@ class User extends Model implements JWTSubject, AuthContract
         return  UserType::where('id',$this->user_type_id)->first();
     }
 
+    // custom
+    public function user_types() {
+        return $this->belongsTo('App\UserType');
+    }
+
     // relations
     public function courses()
     {

@@ -21,6 +21,7 @@ $factory->define(User::class, function (Faker $faker) {
         'names' => $faker->unique()->name,
         'surnames' => $faker->unique()->name,
         'email' => $faker->unique()->safeEmail,
+        'is_verified' => true,
         'user_type_id' => \App\UserType::inRandomOrder()->value('id'),
         'password' => '$2y$10$bOPjpZHRfESwY71NEXse5.MzGdCInhqWWKDgsJI0LmvktX5dFCWKe', // password
         'restore_token' => null,

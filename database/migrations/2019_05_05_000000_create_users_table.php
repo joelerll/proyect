@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
                 $table->string('email')->unique();
                 $table->string('password')->nullable();
                 $table->string('restore_token')->nullable();
+                $table->string('is_verified')->default(false);
                 $table->timestamp('restore_token_date_limit')->nullable();
                 $table->unsignedBigInteger('user_type_id');
                 $table->foreign('user_type_id')->default(2)->references('id')->on('user_types')->onDelete('cascade');

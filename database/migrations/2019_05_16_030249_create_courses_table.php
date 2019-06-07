@@ -19,7 +19,7 @@ class CreateCoursesTable extends Migration
             $table->text('about')->nullable();
             $table->text('learn')->nullable();
             $table->string('image')->nullable();
-            $table->boolean('available')->nullable();
+            $table->boolean('available')->default(true);
             $table->decimal('price', 8, 2)->nullable();
             $table->timestamps();
         });
