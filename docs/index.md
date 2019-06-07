@@ -29,9 +29,7 @@ _response_
 
 Nombre: login 
 
-_POST /api/login_ 
-
-_URL_ http://127.0.0.1:8000/api/login
+> POST /api/login
 
 _request_
 
@@ -59,10 +57,7 @@ _response_
 
 Nombre: logout 
 
-_POST /api/login_ 
-
-_URL_ http://127.0.0.1:8000/api/logout
-
+> POST /api/logout
 
 _response_
 
@@ -78,9 +73,7 @@ _response_
 
 Nombre: register 
 
-_POST /api/login_ 
-
-_URL_ http://127.0.0.1:8000/api/client/register
+> POST /client/register
 
 _request_
 
@@ -114,9 +107,7 @@ _response_
 
 Nombre: recover send mail 
 
-_POST /api/login_ 
-
-_URL_ http://127.0.0.1:8000/api/recover_password_send
+> POST /api/recover_password_send
 
 _request_
 
