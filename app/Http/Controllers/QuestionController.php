@@ -23,7 +23,7 @@ class QuestionController extends Controller
         $courses_user = $CourseUser->where('user_id', '=', $user_id)->pluck('course_id')->toArray();
 
         if (!in_array($id, $courses_user)) {
-            return response()->json(['message' => 'No tiene permitido']);
+            return response()->json(['message' => 'No tiene permitido', "success" => false]);
         }
 
         $bodyContent = json_decode($request->getContent());
@@ -33,7 +33,7 @@ class QuestionController extends Controller
         $question->user_id = $user_id;
         $question->course_id = (int)$id;
         $question->save();
-        return response()->json($question);
+        return response()->json(["success"=> true, "data" => $question]);
     }
 
     public function get(Request $request, Question $Question, CourseUser $CourseUser)
@@ -44,9 +44,9 @@ class QuestionController extends Controller
         $courses_user = $CourseUser->where('user_id', '=', $user_id)->pluck('course_id')->toArray();
 
         if (!in_array($id, $courses_user)) {
-            return response()->json(['message' => 'No tiene permitido']);
+            return response()->json(['message' => 'No tiene permitido', 'success' => false]);
         }
 
-        return response()->json($Question->where('course_id', $id)->with('answers')->get());
+        return response()->json(["success" => true, "data" => $Question->where('course_id', $id)->with('answers')->get()]);
     }
 }

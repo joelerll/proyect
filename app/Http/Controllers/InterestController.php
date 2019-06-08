@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class InterestController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth', ['except' => []]);
+    }
+
     public function show(Interest $Interest)
     {
         return response()->json($Interest->get());

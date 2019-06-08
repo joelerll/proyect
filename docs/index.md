@@ -122,14 +122,28 @@ ______
 
 ### [Carrito de compras](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c93956a46989524fb5239c3)
 
+1. [Crear carrito](#crear-carrito)
+2. [Obtener carrito de compras por usuario](#obtener-carrito-de-compras-por-usuario) // FIX
+    <!-- debe enviar los descuentos -->
+3. [Eliminar carrito de un usuario](#eliminar-carrito-de-un-usuario) 
+4. [Anadir un curso al carrito](#anador-un-curso-al-carrito)  // FIX
+    <!-- no debe calcular los descuentos la hacer la compra, no enviarla desde el front -->
+5. [Eliminar un curso del carrito](#eliminar-un-curso-del-carrito)
 ______
 
 ### [Checkout](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c9395649e37ea24d74a8b6e)
 
+1. [Crear carrito](#crear-carrito)
 ______
 
 ### [Vista Curso (Comprado) - Acerca](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca800f0204ce69f2deb10b3)
 
+1. [Obtener los tutores de un curso](#obtener-los-tutores-de-un-curso)
+2. [Obtener duracion en segundos de un curso](#obtener-duracion-en-segundos-de-un-curso)
+3. [Obtener un curso](#obtener-un-curso)
+4. [Calificar un curso](#calificar-un-curso)
+5. [Obtener calificacion de un curso por usuario](#obtener-calificacion-de-un-curso-por-usuario)
+6. [Obtener contenido de un curso](#obtener-contenido-de-un-curso)
 ______
 
 ### [Vista Curso (Comprado) - Contenido](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca552cbd5d005a224778200)
@@ -141,6 +155,8 @@ ______
 ______
 
 ### [Q&A - Modal Pregunta](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5caa791b65b9d234ea008f7d)
+
+1. [Question Crear](#question-create)
 
 ______
 
@@ -190,14 +206,13 @@ ______
 
 ### [Mis Cursos - Modal para calificar curso](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc337931b465f2d85120b1d)
 
-______
-
-### [Mis Cursos - Modal para calificar curso (interacción)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc337a84cb7a82cf53a15a9)
+1. [Calificar un curso](#calificar-un-curso)
 
 ______
 
 ### [Mis Cursos - Editar una calificación dada](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc337ae4ff3fa2d7452f114)
 
+1. [Score update Curso](#score-update-curso)
 ______
 
 ### [Mis Cursos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc3382f138c282d495da56e)
@@ -573,3 +588,397 @@ _response_
 }
 ```
 
+## [Crear carrito](#crear-carrito)
+
+Nombre: Cart - create
+
+> POST /api/cart
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": 1
+}
+```
+
+
+## [Obtener carrito de compras por usuario](#obtener-carrito-de-compras-por-usuario)
+
+Nombre: Cart - get
+
+> GET /api/cart/user
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 6,
+      "is_billing": 0,
+      "user_id": 60,
+      "created_at": "2019-06-08 07:06:33",
+      "updated_at": "2019-06-08 07:06:33",
+      "cart_items": [
+        {
+          "id": 6,
+          "is_billing": 0,
+          "cart_id": 6,
+          "course_id": 5,
+          "price": "56.00",
+          "code": null,
+          "created_at": "2019-06-08 07:12:09",
+          "updated_at": "2019-06-08 07:12:09",
+          "course": {
+            "id": 5,
+            "name": "Miramontes y Méndez e Hijos",
+            "about": "Debitis ut ipsum quae explicabo eos qui consectetur. Rem eaque aut repudiandae. Quia quidem dolorem quaerat et possimus eius voluptates molestiae. Tempora dolores ut corporis ut praesentium dolores.",
+            "learn": "Ad sunt vel voluptas id. Libero dolore aperiam dolor sit accusamus eum aut hic. Atque nam occaecati est.",
+            "image": "https:\/\/lorempixel.com\/640\/480\/?15774",
+            "available": 1,
+            "price": "49.58",
+            "created_at": "2019-06-08 01:49:11",
+            "updated_at": "2019-06-08 01:49:11"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+## [Eliminar carrito de un usuario](#eliminar-carrito-de-un-usuario)
+
+Nombre: Cart - delete
+
+> DELETE /api/cart/all
+
+_response_
+
+```json
+{
+  "success": true
+}
+```
+
+
+## [Anadir un curso al carrito](#anador-un-curso-al-carrito)
+
+Nombre: Cart - add course
+
+> PUT /api/cart/{cart_id}/course/{course_id}
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": {
+    "course_id": "5",
+    "cart_id": "6",
+    "price": 56,
+    "updated_at": "2019-06-08 07:12:09",
+    "created_at": "2019-06-08 07:12:09",
+    "id": 6
+  }
+}
+```
+
+## [Eliminar un curso del carrito](#eliminar-un-curso-del-carrito)
+
+Nombre: Cart - pop course
+
+> DELETE /api/cart/{cart_id}/course/{course_id}
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": 1
+}
+```
+
+## [Obtener los tutores de un curso](#obtener-los-tutores-de-un-curso)
+
+
+Nombre: Course get Tutors
+
+> GET /api/course/tutor/{course_id}
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 10,
+      "names": "Inés Segovia",
+      "surnames": "Carlos Alvarado",
+      "email": "tburgos@example.com",
+      "restore_token": null,
+      "is_verified": "1",
+      "restore_token_date_limit": null,
+      "user_type_id": 2,
+      "created_at": "2019-05-12 12:52:02",
+      "updated_at": "2019-05-18 13:00:06",
+      "course_id": 10,
+      "user_id": 60
+    }
+  ]
+}
+```
+
+
+## [Obtener un curso](#obtener-un-curso)
+
+Nombre: Course get One
+
+> GET /api/course/10{course_id}
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": 10,
+    "name": "Gallardo y Salgado y Asoc.",
+    "about": "Et id et sed mollitia consequuntur. Iure nam sint dicta provident reprehenderit. Velit a molestias aliquam est quis vel dicta.",
+    "learn": "Corporis quis odit voluptatem praesentium illo. Omnis et atque odio porro animi quod. Atque excepturi vero ut reiciendis est velit occaecati.",
+    "image": "https:\/\/lorempixel.com\/640\/480\/?16302",
+    "available": 1,
+    "price": "40.25",
+    "created_at": "2019-06-08 01:49:11",
+    "updated_at": "2019-06-08 01:49:11"
+  }
+}
+```
+
+
+## [Obtener contenido de un curso](#obtener-contenido-de-un-curso)
+
+Nombre: Course get One
+
+> GET /api/course/content/{course_id}
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "course_id": 10,
+      "name": "Illum sit.",
+      "description": "Expedita dolores aut numquam. Dolorum voluptate ea eaque ea. Tenetur ipsum occaecati hic enim dolores et dolorum.",
+      "order": 8,
+      "created_at": "2019-06-08 01:50:49",
+      "updated_at": "2019-06-08 01:50:49",
+      "videos": [
+        {
+          "id": 20,
+          "content_course_id": 1,
+          "url": "https:\/\/lorempixel.com\/640\/480\/?40282",
+          "placeholder": "https:\/\/lorempixel.com\/640\/480\/?24525",
+          "duration": "00:10:00",
+          "order": 1,
+          "created_at": "2019-06-08 01:50:52",
+          "updated_at": "2019-06-08 01:50:52"
+        },
+        {
+          "id": 183,
+          "content_course_id": 1,
+          "url": "https:\/\/lorempixel.com\/640\/480\/?41789",
+          "placeholder": "https:\/\/lorempixel.com\/640\/480\/?39888",
+          "duration": "00:10:00",
+          "order": 2,
+          "created_at": "2019-06-08 01:50:58",
+          "updated_at": "2019-06-08 01:50:58"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "course_id": 10,
+      "name": "Illo impedit nam.",
+      "description": "Aut deserunt quae et. Nostrum labore est ut rerum error omnis. Quidem rerum molestiae nulla.",
+      "order": 7,
+      "created_at": "2019-06-08 01:50:50",
+      "updated_at": "2019-06-08 01:50:50",
+      "videos": [
+        {
+          "id": 1,
+          "content_course_id": 23,
+          "url": "https:\/\/lorempixel.com\/640\/480\/?34382",
+          "placeholder": "https:\/\/lorempixel.com\/640\/480\/?78684",
+          "duration": "00:00:10",
+          "order": 0,
+          "created_at": "2019-06-08 01:50:51",
+          "updated_at": "2019-06-08 01:50:51"
+        },
+        {
+          "id": 13,
+          "content_course_id": 23,
+          "url": "https:\/\/lorempixel.com\/640\/480\/?70512",
+          "placeholder": "https:\/\/lorempixel.com\/640\/480\/?95292",
+          "duration": "00:01:00",
+          "order": 2,
+          "created_at": "2019-06-08 01:50:52",
+          "updated_at": "2019-06-08 01:50:52"
+        }
+      ]
+    }
+  ]
+}
+```
+
+## [Obtener duracion en segundos de un curso](#obtener-duracion-en-segundos-de-un-curso)
+
+Nombre: Course get course duration
+
+> GET /api/course/video/{course_id}/duration
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": {
+    "duration": "1270"
+  }
+}
+```
+
+## [Obtener duracion contenido en segundos](#obtener-duracion-contenido)
+
+Nombre: Course get course duration
+
+> GET /api/course/video/{course_id}/duration
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": {
+    "duration": "70"
+  }
+}
+```
+
+## [Calificar un curso](#calificar-un-curso)
+
+Nombre: Course - score
+
+> POST /api/score/course/{course_id}
+
+_request_
+
+```json
+{
+	"comment": "sada",
+	"title": "asds",
+	"score": 5
+}
+```
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": {
+    "comment": "sada",
+    "title": "asds",
+    "score": 5,
+    "course_id": "10",
+    "user_id": 60,
+    "updated_at": "2019-06-08 19:31:36",
+    "created_at": "2019-06-08 19:31:36",
+    "id": 503
+  }
+}
+```
+
+## [Score update Curso](#score-update-curso)
+
+Nombre: Course - score update
+
+> POST /api/score/{score_id}/course/{course_id}
+
+_request_
+
+```json
+{
+	"comment": "aaasasas",
+	"title": "asdaaas",
+	"score": 5
+}
+```
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": 1
+}
+```
+
+## [Obtener calificacion de un curso por usuario](#obtener-calificacion-de-un-curso-por-usuario)
+
+
+Nombre:
+
+> GET /api/score/course/{course_id}
+_response_
+
+```json
+```
+
+
+## Question
+
+### [Create](#question-create)
+
+Nombre: Course - score
+
+> POST /api/score/course/{course_id}
+
+_request_
+
+```json
+{
+  "text": "asdsad",
+  "title": "asdsd",
+  "user_id": 60,
+  "course_id": 10,
+  "updated_at": "2019-06-08 23:32:16",
+  "created_at": "2019-06-08 23:32:16",
+  "id": 501
+}
+```
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": {
+    "text": "asdsad",
+    "title": "asdsd",
+    "user_id": 60,
+    "course_id": 10,
+    "updated_at": "2019-06-08 23:34:15",
+    "created_at": "2019-06-08 23:34:15",
+    "id": 503
+  }
+}
+}
+```

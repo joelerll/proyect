@@ -24,7 +24,7 @@ class ContentCourseController extends Controller
         $content_id  = request('content_id');
         $content = \App\ContentCourse::select(DB::raw('SUM(TIME_TO_SEC(videos.duration)) as duration'))
         ->join('videos', 'content_courses.id', '=', 'videos.content_course_id')
-        ->where('content_courses.id', $content_id)->get();
+        ->where('content_courses.id', $content_id)->first();
         return response()->json(["success" => true, "data" => $content]);
     }
 

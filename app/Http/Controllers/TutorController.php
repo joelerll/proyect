@@ -17,6 +17,8 @@ class TutorController extends Controller
     }
 
     public function getTutor(CourseUser $CourseUser, Course $Course) {
+        // valorations
+        // number estudents
         $course_id  = request('course_id');
         $clientId = 2;
         $CourseUser = \App\User::select("*")

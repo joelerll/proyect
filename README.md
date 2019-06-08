@@ -115,3 +115,4 @@ _Curso_
 -   [ ] Mejorar mensajes de error y mensajes de validaciones
 -   [ ] Mask credit cart number y 3 digitos credit card
 -   [ ] Reportar que todas las rutas esten protegidas
+-   [ ] Puedo calificar un curso varias veces
