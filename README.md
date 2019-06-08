@@ -114,3 +114,4 @@ _Curso_
 -   [ ] Try catch correo ya existente
 -   [ ] Mejorar mensajes de error y mensajes de validaciones
 -   [ ] Mask credit cart number y 3 digitos credit card
+-   [ ] Reportar que todas las rutas esten protegidas

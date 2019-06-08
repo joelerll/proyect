@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Course;
 use App\Score;
 use App\User;
+use App\CourseUser;
 use Illuminate\Support\Facades\DB;
 use  Illuminate\Support\Collection;
 
@@ -15,6 +16,19 @@ class CoursesController extends Controller
     public function __construct()
     {
         $this->middleware('jwt.auth', ['except' => []]);
+    }
+
+    public function get(CourseUser $CourseUser, Course $Course) {
+        $course_id  = request('course_id');
+        $user_id = auth()->user()->id;
+        $courses_user = $CourseUser->where('user_id', '=', $user_id)->pluck('course_id')->toArray();
+
+        if (!in_array($course_id, $courses_user)) {
+            return response()->json(['message' => 'No tiene permisos para ver este curso', "success" => false]);
+        }
+
+        $course = $Course->where("id", $course_id)->first();
+        return response()->json(["success" => true, "data" => $course]);
     }
 
     public function getAllByUser()

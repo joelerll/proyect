@@ -10,6 +10,10 @@ use App\Course;
 
 class AnswerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth', ['except' => []]);
+    }
     public function create(Request $request, Answer $Answer)
     {
         $user_id = auth()->user()->id;

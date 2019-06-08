@@ -8,6 +8,10 @@ use App\CartItem;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.auth', ['except' => []]);
+    }
     public function create(Request $request, Cart $Cart)
     {
         $user_id = auth()->user()->id;

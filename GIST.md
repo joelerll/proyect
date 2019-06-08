@@ -5,6 +5,7 @@ belongsTo and belongsToMany you're telling Laravel that this table holds the for
 hasOne and hasMany is telling Laravel that this table does not have the foreign key
 
 
+$content = $ContentCourse->where('course_id', '=', $course_id)->pluck('course_id')->toArray();
 ->withPivot('score');
 
 // Route::group([

@@ -67,3 +67,14 @@ Route::delete('cart/all', 'CartController@deleteAll'); // vaciar carrito
 Route::delete('cart/{cart_id}/course/{course_id}', 'CartController@deleteCourse');
 Route::put('cart/{cart_id}/course/{course_id}', 'CartController@addCourse');
 Route::get('cart/user', 'CartController@getUserCart');
+
+//course
+Route::get('course/{course_id}', 'CoursesController@get');
+Route::get('course/content/{course_id}', 'ContentCourseController@getCourse');
+Route::get('course/tutor/{course_id}', 'TutorController@getTutor');
+
+// video
+Route::get('course/video/{course_id}/duration', 'VideosController@getCourseDuration');
+
+// content
+Route::get('content/{content_id}/duration', 'ContentCourseController@getContentDuration');
