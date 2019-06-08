@@ -7,6 +7,7 @@ use App\Interest;
 use App\User;
 use App\Course;
 use App\InterestUser;
+use Illuminate\Support\Facades\DB;
 
 class InterestController extends Controller
 {
