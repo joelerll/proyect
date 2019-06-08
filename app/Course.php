@@ -26,4 +26,19 @@ class Course extends Model
     {
         return $this->belongsToMany('App\Interest');
     }
+
+    public function cart_items()
+    {
+        return $this->hasMany('App\CartItem');
+    }
+
+    public function content()
+    {
+        return $this->hasMany('App\ContentCourse');
+    }
+
+    public function discount()
+    {
+        return $this->hasMany('App\CourseDiscount');
+    }
 }

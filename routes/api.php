@@ -59,3 +59,11 @@ Route::get('question/course/{id}', 'QuestionController@get');
 
 // Answer
 Route::post('answer/question/{id}', 'AnswerController@create');
+
+
+// cart
+Route::post('cart', 'CartController@create');
+Route::delete('cart/all', 'CartController@deleteAll'); // vaciar carrito
+Route::delete('cart/{cart_id}/course/{course_id}', 'CartController@deleteCourse');
+Route::put('cart/{cart_id}/course/{course_id}', 'CartController@addCourse');
+Route::get('cart/user', 'CartController@getUserCart');

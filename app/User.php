@@ -101,5 +101,10 @@ class User extends Model implements JWTSubject, AuthContract
     {
         return $this->hasMany('App\Score');
     }
+
+    public function carts()
+    {
+        return $this->hasMany('App\Cart');
+    }
 }
 

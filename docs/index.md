@@ -1,21 +1,85 @@
+<!-- 6/45, 20/45, 40/45, 45/45, documentar-->
+
 # Tutor - Desktop
 
 ### [Dashboard (tutor) - Desktop](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca9504bed21e79faa2ae88f)
 
 <!-- notificaciones??? -->
 
-1.  [Estadisticas cursos tutor](#estadisticas-cursos-tutor)
+1. [Estadisticas cursos tutor](#estadisticas-cursos-tutor)
 2. [Cursos de un tutor](#cursos-de-un-tutor)
 3. [Gananacias de este mes y totales de un curso](#gananacias-de-este-mes-y-totales-de-un-curso)
 4. [Estudiantes totales y nuevos curso](#estudiantes-totales-y-nuevos-curso)
 5. [Preguntas por curso](#preguntas-por-curso)
 
+_______
+
+### [Perfil (tutor) - Editar perfil](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca5582075036d16712fb7fb)
+
+______
+
+### [Perfil (tutor) - Mis Pagos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a869bc9eec3920ed540b)
+
+______
+
+### [Perfil (tutor) - Información Bancaria](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a86f38e78431542a19e4)
+
+______
+
+### [Perfil (tutor) - Enlace de Referidos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a857b94a0d6c2420e9a0)
+
+______
+
+### [Cómo usar Comuni](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cabef20a994f9598bf353d4)
+
+______
+
+### [Cómo usar Comuni (mobile)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cabfe99424c7c01660e06ce)
+
+______
+
+### [Vista Curso (Comprado) - Contenido pdf](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cca49db29ef1667fc108810)
+
+
+# Tutor – Mobile
+
+### [Perfil (tutor) - Editar Perfil (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a83eb962339fc222f1bb)
+
+______
+
+### [Perfil (tutor) - Editar Perfil (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a83eb962339fc222f1bb)
+
+______
+
+### [Perfil (tutor) - Mis Pagos (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca9f67a38e78431542ff708)
+
+______
+
+### [Perfil (tutor) - Información Bancaria (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca9f67d65b9d234eafe4a8f)
+
+______
+
+### [Perfil (tutor) - Enlace de Referidos (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a86c65b9d234eaf38a10)
+
+______
+
+### [Dashboard (tutor) - Mobile](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca9503b855cd9353ea11125)
 
 # Usuario – Desktop
+
+### [Home](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c94e1f51f1c5c24ddc2e74c)
+
+______
+
+### [Vista Curso - v2](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca607b4fdfc71a25a3a9c81)
+
+______
 
 ### [Registro (Paso 1)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a967ae84d19c13dd7188)
 
 1. [Registro](#register)
+
+______
 
 ### [Elgir intereses (Paso 2)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/dashboard)
 
@@ -23,21 +87,125 @@
 
 2. [Anadir intereses a cliente](#anadir-intereses-a-cliente)
 
+______
+
 ### [Iniciar Sesión](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c95453248d5c424cc1b04f3)
 
 1. [Login](#login)
 
+______
+
 ### [Olvidaste contraseña](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cab34dafdfc71a25a4df980)
 
 1. [Recover send mail](#recover-send-mail)
+
+______
 
 
 ### [Olvidaste contraseña 2](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cabb58bb962339fc22fb8bf)
 
 1. [Recover password](#recover-password)
 
+______
+
+### [Página de Búsqueda](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c924d1b9f489505cadf4092)
+
+______
+
+### [Push-notification (verificación de correo)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c92e23ba5a218058779f6e1)
+
+______
+
+### [Home post-registro (usuario)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c92e21d361d0e055139cc6e)
+
+______
+
+### [Carrito de compras](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c93956a46989524fb5239c3)
+
+______
+
+### [Checkout](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c9395649e37ea24d74a8b6e)
+
+______
+
+### [Vista Curso (Comprado) - Acerca](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca800f0204ce69f2deb10b3)
+
+______
+
+### [Vista Curso (Comprado) - Contenido](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca552cbd5d005a224778200)
+
+______
+
+### [Vista Curso (Comprado) - Q&A](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca5531394299816a98c28ba)
+
+______
+
+### [Q&A - Modal Pregunta](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5caa791b65b9d234ea008f7d)
+
+______
+
+### [Vista Curso (Comprado) - Q&A2](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca81985e89d3f3389629888)
+
+______
+
+### [Perfil (usuario) - Editar perfil](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c941015ebdbb566f1f491bb)
+
+______
+
+### [Perfil (usuario)- Cuenta](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c9410131f295f0642f8508c)
+
+______
+
+### [Perfil (usuario)- Certificaciones](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c94101f4e90c024d1e04f55)
+
+______
+
+### [Mis Certificaciones - Ver certificado](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5caa48b878e0b72a43bf9c46)
+
+______
+
+### [Perfil (usuario)- Historial de Pagos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c94102546989524fb595cc6)
+
+______
+
+### [Factura](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cab40007f5deba214d46d6b)
+
+______
+
+### [Perfil (usuario)- Métodos de Pago](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c94100d87814d603ed2c3af)
+
+______
+
+### [Política de privacidad (desktop)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5caa601bfdfc71a25a47d062)
+
+______
+
+### [Generar solicitud de pago-modal](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc09dd75d35c92666d8ce59)
+
+______
+
+### [Checkout - Transferencia bancaria](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc09de63f395453667f8bd2)
+
+______
+
+### [Mis Cursos - Modal para calificar curso](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc337931b465f2d85120b1d)
+
+______
+
+### [Mis Cursos - Modal para calificar curso (interacción)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc337a84cb7a82cf53a15a9)
+
+______
+
+### [Mis Cursos - Editar una calificación dada](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc337ae4ff3fa2d7452f114)
+
+______
+
+### [Mis Cursos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc3382f138c282d495da56e)
 
 
+# Usuario – Mobile
+
+# Detalles
 <!-- 
 
 ### Cómo usar Comuni.png
