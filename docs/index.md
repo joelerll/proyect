@@ -16,8 +16,8 @@ _______
 
 ### [Perfil (tutor) - Editar perfil](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca5582075036d16712fb7fb)
 
-1. [Obtener Perfil](#obtener-perfil-tutor)
-2. [Editar Perfil](#editar-perfil-tutor)
+1. [Obtener Perfil Tutor](#obtener-perfil-tutor)
+2. [Editar Perfil Tutor](#editar-perfil-tutor)
 ______
 
 ### [Perfil (tutor) - Mis Pagos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a869bc9eec3920ed540b)
@@ -26,9 +26,14 @@ ______
 
 ### [Perfil (tutor) - Información Bancaria](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a86f38e78431542a19e4)
 
-<!-- ______
+1. [Obtener Info Bancaria](#obtener-info-bancaria)
+2. [Editar Info Bancaria](#editar-info-bancaria)
+3. [Create Info Bancaria](#create-info-bancaria)
+______
 
 ### [Perfil (tutor) - Enlace de Referidos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a857b94a0d6c2420e9a0)
+
+<!-- ______
 
 ______
 
@@ -432,7 +437,118 @@ _response_
 
 # Tutor
 
-### [Obtener Perfil](#obtener-perfil-tutor)
+### [Create Info Bancaria](#create-info-bancaria)
+
+Nombre: Tutor - profile - bankInfo
+
+
+> POST /api/tutor/bank_info
+
+_request_
+
+```sh
+{
+	"account_number": "1255",
+	"name": "sdsa",
+	"email": "asddsa",
+	"document_type": "sdas",
+	"dni": "sad",
+	"bank_name": "asdsd"
+}
+```
+
+_response_
+
+```sh
+{
+  "success": true,
+  "data": {
+    "account_number": "1255",
+    "name": "sdsa",
+    "email": "asddsa",
+    "document_type": "sdas",
+    "dni": "sad",
+    "bank_name": "asdsd",
+    "user_id": 60,
+    "updated_at": "2019-06-09 15:07:00",
+    "created_at": "2019-06-09 15:07:00",
+    "id": 101
+  }
+}
+```
+
+### [Editar Info Bancaria](#editar-info-bancaria)
+
+Nombre: Tutor - profile - bankInfo
+
+
+> PUT /api/tutor/bank_info/{bank_info_id}
+
+_request_
+
+```sh
+{
+	"account_number": "1255",
+	"name": "sdsa",
+	"email": "asddsa",
+	"document_type": "sdas",
+	"dni": "sad",
+	"bank_name": "asdsd"
+}
+```
+
+_response_
+
+```sh
+{
+  "success": true,
+  "data": {
+    "id": 88,
+    "account_number": "1255",
+    "name": "sdsa",
+    "email": "asddsa",
+    "document_type": "sdas",
+    "dni": "sad",
+    "bank_name": "asdsd",
+    "user_id": 60,
+    "created_at": "2019-06-08 01:50:38",
+    "updated_at": "2019-06-09 15:00:17"
+  }
+}
+```
+
+### [Obtener Info Bancaria](#obtener-info-bancaria)
+
+
+Nombre: Tutor - profile - bankInfo
+
+
+> GET /api/tutor/bank_info
+
+_response_
+
+```sh
+{
+  "success": true,
+  "data": [
+    {
+      "id": 88,
+      "account_number": "ES4567596093677528448110",
+      "name": "Minus sunt est nemo aliquam.",
+      "email": "leire84@example.com",
+      "document_type": "passport",
+      "dni": "17975450F",
+      "bank_name": "Laborum quaerat.",
+      "user_id": 60,
+      "created_at": "2019-06-08 01:50:38",
+      "updated_at": "2019-06-08 01:50:38"
+    }
+  ]
+}
+```
+
+
+### [Obtener Perfil Tutor](#obtener-perfil-tutor)
 
 Nombre: Tutor - dashborad - stadistics
 
@@ -467,7 +583,7 @@ _response_
 }
 ```
 
-### [Editar Perfil](#editar-perfil-tutor)
+### [Editar Perfil Tutor](#editar-perfil-tutor)
 
 Nombre: Tutor - profile - edit
 
