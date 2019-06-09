@@ -16,6 +16,8 @@ _______
 
 ### [Perfil (tutor) - Editar perfil](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca5582075036d16712fb7fb)
 
+1. [Obtener Perfil](#obtener-perfil-tutor)
+2. [Editar Perfil](#editar-perfil-tutor)
 ______
 
 ### [Perfil (tutor) - Mis Pagos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a869bc9eec3920ed540b)
@@ -24,7 +26,7 @@ ______
 
 ### [Perfil (tutor) - Información Bancaria](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a86f38e78431542a19e4)
 
-______
+<!-- ______
 
 ### [Perfil (tutor) - Enlace de Referidos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a857b94a0d6c2420e9a0)
 
@@ -34,36 +36,11 @@ ______
 
 ______
 
-### [Cómo usar Comuni (mobile)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cabfe99424c7c01660e06ce)
+### [Cómo usar Comuni (mobile)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cabfe99424c7c01660e06ce) -->
 
 ______
 
 ### [Vista Curso (Comprado) - Contenido pdf](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cca49db29ef1667fc108810)
-
-
-# Tutor – Mobile
-
-### [Perfil (tutor) - Editar Perfil (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a83eb962339fc222f1bb)
-
-______
-
-### [Perfil (tutor) - Editar Perfil (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a83eb962339fc222f1bb)
-
-______
-
-### [Perfil (tutor) - Mis Pagos (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca9f67a38e78431542ff708)
-
-______
-
-### [Perfil (tutor) - Información Bancaria (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca9f67d65b9d234eafe4a8f)
-
-______
-
-### [Perfil (tutor) - Enlace de Referidos (movil)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a86c65b9d234eaf38a10)
-
-______
-
-### [Dashboard (tutor) - Mobile](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca9503b855cd9353ea11125)
 
 # Usuario – Desktop
 
@@ -217,10 +194,10 @@ ______
 
 ### [Mis Cursos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5cc3382f138c282d495da56e)
 
+<!-- 
+# Usuario – Mobile -->
 
-# Usuario – Mobile
-
-# Detalles
+<!-- # Detalles -->
 <!-- 
 
 ### Cómo usar Comuni.png
@@ -373,7 +350,9 @@ _response_
 }
 ```
 
-## [Obtener intereses](#obtener-intereses)
+# Intereses usuario y curso
+
+### [Obtener intereses](#obtener-intereses)
 
 
 Nombre: Interest - get all
@@ -426,7 +405,7 @@ _response_
 }
 ```
 
-## [Anadir intereses a cliente](#anadir-intereses-a-cliente)
+### [Anadir intereses a cliente](#anadir-intereses-a-cliente)
 
 Nombre: Client - attach interests
 
@@ -449,11 +428,98 @@ _response_
 }
 ```
 
-## [Estadisticas cursos tutor](#estadisticas-cursos-tutor)
+
+
+# Tutor
+
+### [Obtener Perfil](#obtener-perfil-tutor)
 
 Nombre: Tutor - dashborad - stadistics
 
-> GET /api/tutor/courses/statistics
+
+> GET /api/tutor/profile
+
+_response_
+
+```sh
+{
+  "id": 60,
+  "names": "Inés Segovia",
+  "surnames": "Carlos Alvarado",
+  "email": "tburgos@example.com",
+  "restore_token": null,
+  "is_verified": "1",
+  "restore_token_date_limit": null,
+  "user_type_id": 2,
+  "created_at": "2019-06-08 01:49:11",
+  "updated_at": "2019-06-08 01:49:11",
+  "extra_info": {
+    "id": 44,
+    "country": "Honduras",
+    "document_type": "dni",
+    "dni": "05796315Q",
+    "career": "Ut voluptatem odio odio omnis ut.",
+    "description": "Minima eius dolorem eos voluptatum consequatur et.",
+    "user_id": 60,
+    "created_at": "2019-06-08 01:50:32",
+    "updated_at": "2019-06-08 01:50:32"
+  }
+}
+```
+
+### [Editar Perfil](#editar-perfil-tutor)
+
+Nombre: Tutor - profile - edit
+
+
+> PUT /api/tutor/profile
+
+_request_
+
+```sh
+{
+	"names": "sads",
+	"surnames": "sd",
+	"country": "Ecuadora",
+	"document_type": "passsport",
+	"dni": "carrerr",
+	"career": "asdas",
+	"description": "asdds"
+}
+```
+
+_response_
+
+```sh
+{
+  "id": 58,
+  "names": "sads",
+  "surnames": "sd",
+  "email": "alma13@example.net",
+  "restore_token": null,
+  "restore_token_date_limit": null,
+  "user_type_id": 2,
+  "created_at": "2019-05-26 23:09:31",
+  "updated_at": "2019-05-26 23:11:45",
+  "extra_info": {
+    "id": 92,
+    "country": "Ecuadora",
+    "document_type": "passsport",
+    "dni": "carrerr",
+    "career": "asdas",
+    "description": "asdds",
+    "user_id": 58,
+    "created_at": "2019-05-26 23:10:59",
+    "updated_at": "2019-05-26 23:11:45"
+  }
+}
+```
+
+### [Estadisticas cursos tutor](#estadisticas-cursos-tutor)
+
+Nombre: Tutor - dashborad - stadistics
+
+> GET /api/tutor/course/statistic
 
 _response_
 
@@ -470,12 +536,11 @@ _response_
 }
 ```
 
-
-## [Cursos de un tutor](#cursos-de-un-tutor)
+### [Cursos de un tutor](#cursos-de-un-tutor)
 
 Nombre: Tutor - dashborad - courses
 
-> GET /api/tutor/courses
+> GET /api/tutor/course
 
 _response_
 
@@ -500,11 +565,11 @@ _response_
 ```
 
 
-## [Gananacias de este mes y totales de un curso](#gananacias-de-este-mes-y-totales-de-un-curso)
+### [Gananacias de este mes y totales de un curso](#gananacias-de-este-mes-y-totales-de-un-curso)
 
 Nombre: Tutor - dashborad - courses
 
-> GET /api/tutor/courses/revenue/{course-id}
+> GET /api/tutor/course/revenue/{course_id}
 
 _response_
 
@@ -521,11 +586,11 @@ _response_
 ```
 
 
-## [Estudiantes totales y nuevos curso](#estudiantes-totales-y-nuevos-curso)
+### [Estudiantes totales y nuevos curso](#estudiantes-totales-y-nuevos-curso)
 
 Nombre: Tutor - dashborad - students
 
-> GET /api/tutor/courses/students/{course-id}
+> GET /api/tutor/course/student/{course_id}
 
 _response_
 
@@ -540,11 +605,11 @@ _response_
 ```
 
 
-## [Preguntas por curso](#preguntas-por-curso)
+### [Preguntas por curso](#preguntas-por-curso)
 
 Nombre: Tutor - dashborad - questions
 
-> GET /api/tutor/courses/questions/{course-id}
+> GET /api/tutor/course/question/{course_id}
 
 _response_
 
@@ -588,7 +653,9 @@ _response_
 }
 ```
 
-## [Crear carrito](#crear-carrito)
+# Cart
+
+### [Crear carrito](#crear-carrito)
 
 Nombre: Cart - create
 
@@ -604,7 +671,7 @@ _response_
 ```
 
 
-## [Obtener carrito de compras por usuario](#obtener-carrito-de-compras-por-usuario)
+### [Obtener carrito de compras por usuario](#obtener-carrito-de-compras-por-usuario)
 
 Nombre: Cart - get
 
@@ -650,7 +717,7 @@ _response_
 }
 ```
 
-## [Eliminar carrito de un usuario](#eliminar-carrito-de-un-usuario)
+### [Eliminar carrito de un usuario](#eliminar-carrito-de-un-usuario)
 
 Nombre: Cart - delete
 
@@ -665,7 +732,7 @@ _response_
 ```
 
 
-## [Anadir un curso al carrito](#anador-un-curso-al-carrito)
+### [Anadir un curso al carrito](#anador-un-curso-al-carrito)
 
 Nombre: Cart - add course
 
@@ -687,7 +754,7 @@ _response_
 }
 ```
 
-## [Eliminar un curso del carrito](#eliminar-un-curso-del-carrito)
+### [Eliminar un curso del carrito](#eliminar-un-curso-del-carrito)
 
 Nombre: Cart - pop course
 
@@ -702,7 +769,10 @@ _response_
 }
 ```
 
-## [Obtener los tutores de un curso](#obtener-los-tutores-de-un-curso)
+
+# Cursos
+
+### [Obtener los tutores de un curso](#obtener-los-tutores-de-un-curso)
 
 
 Nombre: Course get Tutors
@@ -734,7 +804,7 @@ _response_
 ```
 
 
-## [Obtener un curso](#obtener-un-curso)
+### [Obtener un curso](#obtener-un-curso)
 
 Nombre: Course get One
 
@@ -760,7 +830,7 @@ _response_
 ```
 
 
-## [Obtener contenido de un curso](#obtener-contenido-de-un-curso)
+### [Obtener contenido de un curso](#obtener-contenido-de-un-curso)
 
 Nombre: Course get One
 
@@ -838,7 +908,7 @@ _response_
 }
 ```
 
-## [Obtener duracion en segundos de un curso](#obtener-duracion-en-segundos-de-un-curso)
+### [Obtener duracion en segundos de un curso](#obtener-duracion-en-segundos-de-un-curso)
 
 Nombre: Course get course duration
 
@@ -855,7 +925,9 @@ _response_
 }
 ```
 
-## [Obtener duracion contenido en segundos](#obtener-duracion-contenido)
+# Contenido de un curso
+
+### [Obtener duracion contenido en segundos](#obtener-duracion-contenido)
 
 Nombre: Course get course duration
 
@@ -872,7 +944,9 @@ _response_
 }
 ```
 
-## [Calificar un curso](#calificar-un-curso)
+# Calificar curso
+
+### [Calificar un curso](#calificar-un-curso)
 
 Nombre: Course - score
 
@@ -906,7 +980,7 @@ _response_
 }
 ```
 
-## [Score update Curso](#score-update-curso)
+### [Score update Curso](#score-update-curso)
 
 Nombre: Course - score update
 
@@ -931,7 +1005,7 @@ _response_
 }
 ```
 
-## [Obtener calificacion de un curso por usuario](#obtener-calificacion-de-un-curso-por-usuario)
+### [Obtener calificacion de un curso por usuario](#obtener-calificacion-de-un-curso-por-usuario)
 
 
 Nombre:
@@ -943,9 +1017,9 @@ _response_
 ```
 
 
-## Question
+# Question
 
-### [Create](#question-create)
+### [Question Crear](#question-create)
 
 Nombre: Course - score
 

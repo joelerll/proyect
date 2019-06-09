@@ -25,11 +25,11 @@ Route::post('recover_password_send', 'AuthController@recoverPasswordSend');
 Route::post('recover_password', 'AuthController@recoverPassword');
 
 // Tutor dashboard
-Route::get('tutor/courses', 'CoursesController@getAllByUser');
-Route::get('tutor/courses/revenue/{id}', 'CoursesController@revenue');
-Route::get('tutor/courses/students/{id}', 'CoursesController@students');
-Route::get('tutor/courses/questions/{id}', 'CoursesController@questions');
-Route::get('tutor/courses/statistics', 'CoursesController@statistics');
+Route::get('tutor/course', 'CoursesController@getAllByUser');
+Route::get('tutor/course/revenue/{id}', 'CoursesController@revenue');
+Route::get('tutor/course/student/{id}', 'CoursesController@students');
+Route::get('tutor/course/question/{id}', 'CoursesController@questions');
+Route::get('tutor/course/statistic', 'CoursesController@statistics');
 
 // Tutor profile
 Route::get('tutor/profile', 'TutorController@get_profile');
