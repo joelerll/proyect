@@ -31,14 +31,15 @@ Route::get('tutor/course/student/{id}', 'CoursesController@students');
 Route::get('tutor/course/question/{id}', 'CoursesController@questions');
 Route::get('tutor/course/statistic', 'CoursesController@statistics');
 
+// User Profiles
+Route::get('tutor/profile', 'UserController@get_profile');
+Route::put('tutor/profile', 'UserController@edit_profile');
+
+Route::get('tutor/bank_info', 'UserController@get_bank_info');
+Route::post('tutor/bank_info', 'UserController@create_bank_info');
+Route::put('tutor/bank_info/{id}', 'UserController@edit_bank_info');
+
 // Tutor profile
-Route::get('tutor/profile', 'TutorController@get_profile');
-Route::put('tutor/profile', 'TutorController@edit_profile');
-
-Route::get('tutor/bank_info', 'TutorController@get_bank_info');
-Route::post('tutor/bank_info', 'TutorController@create_bank_info');
-Route::put('tutor/bank_info/{id}', 'TutorController@edit_bank_info');
-
 Route::get('tutor/payments', 'TutorController@payments');
 
 // Client dashboard

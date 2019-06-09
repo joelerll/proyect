@@ -29,9 +29,9 @@ ______
 1. [Obtener Info Bancaria](#obtener-info-bancaria)
 2. [Editar Info Bancaria](#editar-info-bancaria)
 3. [Create Info Bancaria](#create-info-bancaria)
-______
+<!-- ______
 
-### [Perfil (tutor) - Enlace de Referidos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a857b94a0d6c2420e9a0)
+### [Perfil (tutor) - Enlace de Referidos](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a857b94a0d6c2420e9a0) -->
 
 <!-- ______
 
@@ -434,8 +434,8 @@ _response_
 ```
 
 
+# Usuario
 
-# Tutor
 
 ### [Create Info Bancaria](#create-info-bancaria)
 
@@ -547,6 +547,8 @@ _response_
 }
 ```
 
+
+# Tutor
 
 ### [Obtener Perfil Tutor](#obtener-perfil-tutor)
 
