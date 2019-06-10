@@ -7,6 +7,7 @@ use App\Interest;
 use App\User;
 use App\Course;
 use App\InterestUser;
+use App\CourseInterest;
 use Illuminate\Support\Facades\DB;
 
 class InterestController extends Controller
@@ -45,8 +46,16 @@ class InterestController extends Controller
         return response()->json(["success" => true, "data" => $courses]);
     }
 
-    public function get_tutors(Course $Course)
+    public function get_tutors(CourseInterest $CourseInterest, Course $Course)
     {
-        return response()->json(["success" => true, "data" => "sad"]);
+        $clientId = 2;
+        $interest_id  = request('interest_id');
+        $coursesInterest = $CourseInterest->where('interest_id', $interest_id)->get()->pluck('course_id')->toArray();
+
+        $courses = $Course->whereIn('id', $coursesInterest)->with(['users' => function ($query) use ($clientId) {
+            $query->where('user_type_id', $clientId);
+         }])->get()->pluck('users');
+
+        return response()->json(["success" => true, "data" => $courses]);
     }
 }

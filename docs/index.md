@@ -115,14 +115,16 @@ ______
 2. [Obtener carrito de compras por usuario](#obtener-carrito-de-compras-por-usuario) // FIX
     <!-- debe enviar los descuentos -->
 3. [Eliminar carrito de un usuario](#eliminar-carrito-de-un-usuario) 
-4. [Anadir un curso al carrito](#anador-un-curso-al-carrito)  // FIX
+4. [Anadir un curso al carrito](#anador-un-curso-al-carrito)
     <!-- no debe calcular los descuentos la hacer la compra, no enviarla desde el front -->
 5. [Eliminar un curso del carrito](#eliminar-un-curso-del-carrito)
+
 ______
 
 ### [Checkout](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c9395649e37ea24d74a8b6e)
 
 1. [Crear carrito](#crear-carrito)
+
 ______
 
 ### [Vista Curso (Comprado) - Acerca](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca800f0204ce69f2deb10b3)
@@ -133,7 +135,8 @@ ______
 4. [Calificar un curso](#calificar-un-curso)
 5. [Obtener calificacion de un curso por usuario](#obtener-calificacion-de-un-curso-por-usuario)
 6. [Obtener contenido de un curso](#obtener-contenido-de-un-curso)
-______
+
+_____
 
 ### [Vista Curso (Comprado) - Contenido](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca552cbd5d005a224778200)
 
@@ -142,6 +145,7 @@ ______
 ### [Vista Curso (Comprado) - Q&A](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca5531394299816a98c28ba)
 
 1.  [Question obtener todos curso](#question-obtener-todos-curso)
+
 ______
 
 ### [Q&A - Modal Pregunta](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5caa791b65b9d234ea008f7d)
@@ -158,6 +162,7 @@ ______
 
 1. [Obtener Perfil Usuario](#obtener-perfil-tutor)
 2. [Editar Perfil Usuario](#editar-perfil-tutor)
+
 ______
 
 ### [Perfil (usuario)- Cuenta](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c9410131f295f0642f8508c)
