@@ -141,6 +141,7 @@ ______
 
 ### [Vista Curso (Comprado) - Q&A](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca5531394299816a98c28ba)
 
+1.  [Question obtener todos curso](#question-obtener-todos-curso)
 ______
 
 ### [Q&A - Modal Pregunta](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5caa791b65b9d234ea008f7d)
@@ -155,6 +156,8 @@ ______
 
 ### [Perfil (usuario) - Editar perfil](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c941015ebdbb566f1f491bb)
 
+1. [Obtener Perfil Usuario](#obtener-perfil-tutor)
+2. [Editar Perfil Usuario](#editar-perfil-tutor)
 ______
 
 ### [Perfil (usuario)- Cuenta](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c9410131f295f0642f8508c)
@@ -1401,11 +1404,74 @@ _response_
 
 # Question
 
+### [Question obtener todos curso](#question-obtener-todos-curso)
+
+Nombre: Course - score
+
+> GET /api/question/course/{course_id}
+
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 8,
+      "course_id": 14,
+      "user_id": 53,
+      "text": "Rerum quisquam dolore in omnis sint. Nesciunt ut sequi sit architecto. Saepe officia et molestias.",
+      "title": "Et itaque non voluptatem qui omnis.",
+      "created_at": "2019-06-10 00:08:02",
+      "updated_at": "2019-06-10 00:08:02",
+      "answers": [
+        {
+          "id": 412,
+          "user_id": 30,
+          "question_id": 8,
+          "text": "Iusto aut aut rerum voluptas ut. Praesentium quae et architecto delectus maiores qui eius.",
+          "created_at": "2019-06-10 00:08:42",
+          "updated_at": "2019-06-10 00:08:42"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "course_id": 14,
+      "user_id": 9,
+      "text": "Possimus voluptates enim occaecati sed laboriosam. Voluptatum non in fuga animi assumenda.",
+      "title": "Magnam aperiam sunt dignissimos facilis.",
+      "created_at": "2019-06-10 00:08:04",
+      "updated_at": "2019-06-10 00:08:04",
+      "answers": [
+        {
+          "id": 83,
+          "user_id": 3,
+          "question_id": 47,
+          "text": "Omnis fugit vel est ea. Rerum distinctio enim laborum aliquid. Reprehenderit accusamus ipsum quia.",
+          "created_at": "2019-06-10 00:08:29",
+          "updated_at": "2019-06-10 00:08:29"
+        },
+        {
+          "id": 379,
+          "user_id": 59,
+          "question_id": 47,
+          "text": "Iure laudantium deserunt ut reiciendis aliquam eligendi id. Vel dolor dicta ea ut vitae aliquam.",
+          "created_at": "2019-06-10 00:08:41",
+          "updated_at": "2019-06-10 00:08:41"
+        }
+      ]
+    }
+  ]
+}
+```
+
 ### [Question Crear](#question-create)
 
 Nombre: Course - score
 
-> POST /api/score/course/{course_id}
+> POST /api/question/course/{course_id}
 
 _request_
 
