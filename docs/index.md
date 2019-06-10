@@ -51,11 +51,12 @@ ______
 
 ### [Home](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c94e1f51f1c5c24ddc2e74c)
 
-1. [Obtener todos los cursos segun intereses](#obtener-todos-los-cursos-segun-intereses)
-2. [Intereses con cantidad cursos](#intereses-con-cantidad-cursos)
-3. [Why Use](#why-use)
-4. Mejores tutores
-5. [Testimonies](#testimonies)
+1. [Get interests de un usuario](#get-interests-de-un-usuario)
+2. [Obtener todos los cursos segun intereses](#obtener-todos-los-cursos-segun-intereses)
+3. [Intereses con cantidad cursos](#intereses-con-cantidad-cursos)
+4. [Why Use](#why-use)
+5. Mejores tutores
+6. [Testimonies](#testimonies)
 ______
 
 ### [Vista Curso - v2](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca607b4fdfc71a25a3a9c81)
@@ -460,6 +461,52 @@ _response_
         "name": "Costura",
         "created_at": "2019-05-26 23:54:47",
         "updated_at": "2019-05-26 23:54:47"
+    }
+  ]
+}
+```
+
+### [Get interests de un usuario](#get-interests-de-un-usuario)
+
+Nombre: Interest - User
+
+> POST /api/interest/client
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 2,
+      "name": "Arte",
+      "created_at": "2019-06-10 00:09:16",
+      "updated_at": "2019-06-10 00:09:16",
+      "pivot": {
+        "user_id": 41,
+        "interest_id": 2
+      }
+    },
+    {
+      "id": 3,
+      "name": "Nutrición",
+      "created_at": "2019-06-10 00:09:16",
+      "updated_at": "2019-06-10 00:09:16",
+      "pivot": {
+        "user_id": 41,
+        "interest_id": 3
+      }
+    },
+    {
+      "id": 3,
+      "name": "Nutrición",
+      "created_at": "2019-06-10 00:09:16",
+      "updated_at": "2019-06-10 00:09:16",
+      "pivot": {
+        "user_id": 41,
+        "interest_id": 3
+      }
     }
   ]
 }
@@ -977,7 +1024,42 @@ _response_
       "total_students": 2,
       "average_score": "1.8824",
       "number_reviews": 17,
-      "discount_percentaje": null
+      "discount_percentaje": null,
+      "total_duration_seconds": "600",
+      "teachers": [
+        {
+          "id": 55,
+          "names": "Sra. Leyre Cabán Hijo",
+          "surnames": "Marina Cortés",
+          "email": "robledo.clara@example.com",
+          "restore_token": null,
+          "is_verified": "1",
+          "restore_token_date_limit": null,
+          "user_type_id": 2,
+          "created_at": "2019-06-10 00:07:43",
+          "updated_at": "2019-06-10 00:07:43",
+          "pivot": {
+            "course_id": 9,
+            "user_id": 55
+          }
+        },
+        {
+          "id": 13,
+          "names": "Sra. Anna Hernando Hijo",
+          "surnames": "Jimena Santacruz",
+          "email": "naranjo.manuel@example.net",
+          "restore_token": null,
+          "is_verified": "1",
+          "restore_token_date_limit": null,
+          "user_type_id": 2,
+          "created_at": "2019-06-10 00:07:41",
+          "updated_at": "2019-06-10 00:07:41",
+          "pivot": {
+            "course_id": 9,
+            "user_id": 13
+          }
+        }
+      ]
     },
     {
       "id": 21,
@@ -987,8 +1069,88 @@ _response_
       "total_students": 1,
       "average_score": "2.5714",
       "number_reviews": 7,
-      "discount_percentaje": null
+      "discount_percentaje": null,
+      "total_duration_seconds": "300",
+      "teachers": []
+    },
+    {
+      "id": 22,
+      "image": "https:\/\/lorempixel.com\/640\/480\/?42220",
+      "name": "Galarza y Esteban",
+      "price": "21.00",
+      "total_students": 3,
+      "average_score": "2.5000",
+      "number_reviews": 8,
+      "discount_percentaje": null,
+      "total_duration_seconds": "660",
+      "teachers": [
+        {
+          "id": 49,
+          "names": "Dr. Eduardo Sierra",
+          "surnames": "Yago Santiago",
+          "email": "dario.lorenzo@example.com",
+          "restore_token": null,
+          "is_verified": "1",
+          "restore_token_date_limit": null,
+          "user_type_id": 2,
+          "created_at": "2019-06-10 00:07:43",
+          "updated_at": "2019-06-10 00:07:43",
+          "pivot": {
+            "course_id": 22,
+            "user_id": 49
+          }
+        },
+        {
+          "id": 49,
+          "names": "Dr. Eduardo Sierra",
+          "surnames": "Yago Santiago",
+          "email": "dario.lorenzo@example.com",
+          "restore_token": null,
+          "is_verified": "1",
+          "restore_token_date_limit": null,
+          "user_type_id": 2,
+          "created_at": "2019-06-10 00:07:43",
+          "updated_at": "2019-06-10 00:07:43",
+          "pivot": {
+            "course_id": 22,
+            "user_id": 49
+          }
+        },
+        {
+          "id": 48,
+          "names": "Ana Fernández",
+          "surnames": "Celia Saldaña",
+          "email": "svalentin@example.net",
+          "restore_token": null,
+          "is_verified": "1",
+          "restore_token_date_limit": null,
+          "user_type_id": 2,
+          "created_at": "2019-06-10 00:07:43",
+          "updated_at": "2019-06-10 00:07:43",
+          "pivot": {
+            "course_id": 22,
+            "user_id": 48
+          }
+        },
+        {
+          "id": 7,
+          "names": "Ing. Carmen Bañuelos Hijo",
+          "surnames": "Andrea Garibay",
+          "email": "negron.ane@example.net",
+          "restore_token": null,
+          "is_verified": "1",
+          "restore_token_date_limit": null,
+          "user_type_id": 2,
+          "created_at": "2019-06-10 00:07:41",
+          "updated_at": "2019-06-10 00:07:41",
+          "pivot": {
+            "course_id": 22,
+            "user_id": 7
+          }
+        }
+      ]
     }
+  ]
 }
 ```
 

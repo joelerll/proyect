@@ -33,7 +33,7 @@ class InterestController extends Controller
     {
         $user_id = auth()->user()->id;
         $interests = $User->where('id', $user_id)->with('interest')->first()->interest;
-        return response()->json($interests);
+        return response()->json(["success" => true, "data" => $interests]);
     }
 
     public function get_courses(Course $Course)

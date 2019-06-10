@@ -35,7 +35,7 @@ class CoursesController extends Controller
     public function get_all_by_interest(CourseInterest $CourseInterest, Course $Course) {
         // tiempo total de los videos
         // nombre tutores
-
+        $clientId = 2;
         $interests  = request('interests');
         $coursesInterest = $CourseInterest->whereIn('interest_id', $interests)->pluck("id")->toArray();
 
@@ -47,7 +47,15 @@ class CoursesController extends Controller
 
         $discounts = '(select course_discounts.percentage from course_discounts where course_discounts.course_id = courses.id) as discount_percentaje';
 
-        $courses = $Course->select("courses.id as id", "courses.image as image", "courses.name as name", "courses.price as price", DB::raw($total_students_query), DB::raw($average_score), DB::raw($reviews), DB::raw($discounts))->whereIn("courses.id", $coursesInterest)->get();
+        $course_duration = '(select SUM(TIME_TO_SEC(contents.duration)) from content_courses inner join contents on contents.content_course_id = content_courses.id where content_courses.course_id = courses.id) as total_duration_seconds
+        ';
+
+        $courses = $Course->select("courses.id as id", "courses.image as image", "courses.name as name", "courses.price as price", DB::raw($total_students_query), DB::raw($average_score), DB::raw($reviews), DB::raw($discounts), DB::raw($course_duration))->whereIn("courses.id", $coursesInterest)->with(['teachers' => function ($query) use ($clientId) {
+            $query->where('user_type_id', $clientId);
+         }])->get();
+        // ("courses.id", $coursesInterest)->with('users', function($query) use ($clientId) {
+        //     $query->where("user_type_id",$clientId);
+        // })->get();
         return response()->json(["success" => true, "data" => $courses]);
     }
 

@@ -5,10 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Score;
 use App\CourseUser;
+use App\User;
 
 class Course extends Model
 {
     public function users()
+    {
+        return $this->belongsToMany('App\User', 'course_user');
+    }
+
+    public function teachers()
     {
         return $this->belongsToMany('App\User', 'course_user');
     }
