@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideosTable extends Migration
+class CreateWhyUsesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('why_uses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('content_id')->nullable();
-            $table->foreign('content_id')->references('id')->on('contents');
-            $table->text('url')->nullable();
-            $table->text('placeholder')->nullable();
+            $table->string('placeholder')->nullable();
+            $table->string('name')->nullable();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('why_uses');
     }
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Score;
+use App\CourseUser;
 
 class Course extends Model
 {

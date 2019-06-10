@@ -51,10 +51,16 @@ ______
 
 ### [Home](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5c94e1f51f1c5c24ddc2e74c)
 
+1. [Obtener todos los cursos segun intereses](#obtener-todos-los-cursos-segun-intereses)
+2. [Intereses con cantidad cursos](#intereses-con-cantidad-cursos)
+3. [Why Use](#why-use)
+4. Mejores tutores
+5. [Testimonies](#testimonies)
 ______
 
 ### [Vista Curso - v2](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca607b4fdfc71a25a3a9c81)
 
+<!-- 13 enpoints -->
 ______
 
 ### [Registro (Paso 1)](https://app.zeplin.io/project/5c90088bea57b005455bd5ee/screen/5ca7a967ae84d19c13dd7188)
@@ -283,10 +289,13 @@ _request_
 
 ```json
 {
-	"email": "cupuyaa@clickmail.info",
-	"password": "12dsds",
-	"names": "joel",
-	"surnames": "joel"
+    "success": true,
+    "data": {
+        "email": "cupuyaa@clickmail.info",
+        "password": "12dsds",
+        "names": "joel",
+        "surnames": "joel"
+    }
 }
 ```
 
@@ -357,8 +366,54 @@ _response_
 
 # Intereses usuario y curso
 
-### [Obtener intereses](#obtener-intereses)
+### [Intereses con cantidad cursos](#intereses-con-cantidad-cursos)
 
+
+Nombre: Interest - courses length
+
+> GET /api/interest/course
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "Respostería",
+      "id": 1,
+      "courses": 5
+    },
+    {
+      "name": "Arte",
+      "id": 2,
+      "courses": 12
+    },
+    {
+      "name": "Nutrición",
+      "id": 3,
+      "courses": 11
+    },
+    {
+      "name": "Estética",
+      "id": 4,
+      "courses": 11
+    },
+    {
+      "name": "Fitness",
+      "id": 5,
+      "courses": 5
+    },
+    {
+      "name": "Costura",
+      "id": 6,
+      "courses": 6
+    }
+  ]
+}
+```
+
+### [Obtener intereses](#obtener-intereses)
 
 Nombre: Interest - get all
 
@@ -437,12 +492,98 @@ _response_
 # Usuario
 
 
+### [Obtener Perfil Usuario](#obtener-perfil-tutor)
+
+Nombre: User - profile
+
+
+> GET /api/user/profile
+
+_response_
+
+```sh
+{
+  "id": 60,
+  "names": "Inés Segovia",
+  "surnames": "Carlos Alvarado",
+  "email": "tburgos@example.com",
+  "restore_token": null,
+  "is_verified": "1",
+  "restore_token_date_limit": null,
+  "user_type_id": 2,
+  "created_at": "2019-06-08 01:49:11",
+  "updated_at": "2019-06-08 01:49:11",
+  "extra_info": {
+    "id": 44,
+    "country": "Honduras",
+    "document_type": "dni",
+    "dni": "05796315Q",
+    "career": "Ut voluptatem odio odio omnis ut.",
+    "description": "Minima eius dolorem eos voluptatum consequatur et.",
+    "user_id": 60,
+    "created_at": "2019-06-08 01:50:32",
+    "updated_at": "2019-06-08 01:50:32"
+  }
+}
+```
+
+### [Editar Perfil Usuario](#editar-perfil-tutor)
+
+Nombre: User - profile - edit
+
+
+> PUT /api/user/profile
+
+_request_
+
+```sh
+{
+	"names": "sads",
+	"surnames": "sd",
+	"country": "Ecuadora",
+	"document_type": "passsport",
+	"dni": "carrerr",
+	"career": "asdas",
+	"description": "asdds"
+}
+```
+
+_response_
+
+```sh
+{
+  "success": true,
+  "data": {
+      "id": 58,
+    "names": "sads",
+    "surnames": "sd",
+    "email": "alma13@example.net",
+    "restore_token": null,
+    "restore_token_date_limit": null,
+    "user_type_id": 2,
+    "created_at": "2019-05-26 23:09:31",
+    "updated_at": "2019-05-26 23:11:45",
+    "extra_info": {
+        "id": 92,
+        "country": "Ecuadora",
+        "document_type": "passsport",
+        "dni": "carrerr",
+        "career": "asdas",
+        "description": "asdds",
+        "user_id": 58,
+        "created_at": "2019-05-26 23:10:59",
+        "updated_at": "2019-05-26 23:11:45"
+    }
+  }
+}
+```
+
 ### [Create Info Bancaria](#create-info-bancaria)
 
-Nombre: Tutor - profile - bankInfo
+Nombre: User - profile - bankInfo
 
 
-> POST /api/tutor/bank_info
+> POST /api/user/bank_info
 
 _request_
 
@@ -479,10 +620,10 @@ _response_
 
 ### [Editar Info Bancaria](#editar-info-bancaria)
 
-Nombre: Tutor - profile - bankInfo
+Nombre: User - profile - bankInfo
 
 
-> PUT /api/tutor/bank_info/{bank_info_id}
+> PUT /api/user/bank_info/{bank_info_id}
 
 _request_
 
@@ -520,10 +661,10 @@ _response_
 ### [Obtener Info Bancaria](#obtener-info-bancaria)
 
 
-Nombre: Tutor - profile - bankInfo
+Nombre: User - profile - bankInfo
 
 
-> GET /api/tutor/bank_info
+> GET /api/user/bank_info
 
 _response_
 
@@ -547,91 +688,8 @@ _response_
 }
 ```
 
-
 # Tutor
 
-### [Obtener Perfil Tutor](#obtener-perfil-tutor)
-
-Nombre: Tutor - dashborad - stadistics
-
-
-> GET /api/tutor/profile
-
-_response_
-
-```sh
-{
-  "id": 60,
-  "names": "Inés Segovia",
-  "surnames": "Carlos Alvarado",
-  "email": "tburgos@example.com",
-  "restore_token": null,
-  "is_verified": "1",
-  "restore_token_date_limit": null,
-  "user_type_id": 2,
-  "created_at": "2019-06-08 01:49:11",
-  "updated_at": "2019-06-08 01:49:11",
-  "extra_info": {
-    "id": 44,
-    "country": "Honduras",
-    "document_type": "dni",
-    "dni": "05796315Q",
-    "career": "Ut voluptatem odio odio omnis ut.",
-    "description": "Minima eius dolorem eos voluptatum consequatur et.",
-    "user_id": 60,
-    "created_at": "2019-06-08 01:50:32",
-    "updated_at": "2019-06-08 01:50:32"
-  }
-}
-```
-
-### [Editar Perfil Tutor](#editar-perfil-tutor)
-
-Nombre: Tutor - profile - edit
-
-
-> PUT /api/tutor/profile
-
-_request_
-
-```sh
-{
-	"names": "sads",
-	"surnames": "sd",
-	"country": "Ecuadora",
-	"document_type": "passsport",
-	"dni": "carrerr",
-	"career": "asdas",
-	"description": "asdds"
-}
-```
-
-_response_
-
-```sh
-{
-  "id": 58,
-  "names": "sads",
-  "surnames": "sd",
-  "email": "alma13@example.net",
-  "restore_token": null,
-  "restore_token_date_limit": null,
-  "user_type_id": 2,
-  "created_at": "2019-05-26 23:09:31",
-  "updated_at": "2019-05-26 23:11:45",
-  "extra_info": {
-    "id": 92,
-    "country": "Ecuadora",
-    "document_type": "passsport",
-    "dni": "carrerr",
-    "career": "asdas",
-    "description": "asdds",
-    "user_id": 58,
-    "created_at": "2019-05-26 23:10:59",
-    "updated_at": "2019-05-26 23:11:45"
-  }
-}
-```
 
 ### [Estadisticas cursos tutor](#estadisticas-cursos-tutor)
 
@@ -889,6 +947,50 @@ _response_
 
 
 # Cursos
+
+### [Obtener todos los cursos segun intereses](#obtener-todos-los-cursos-segun-intereses)
+
+
+Nombre: Client - get courses by interests
+
+> POST /api/course/interest
+
+_request_
+
+```json
+{
+	"interests": [1]
+}
+```
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 9,
+      "image": "https:\/\/lorempixel.com\/640\/480\/?81495",
+      "name": "Santacruz de Garibay SRL",
+      "price": "40.80",
+      "total_students": 2,
+      "average_score": "1.8824",
+      "number_reviews": 17,
+      "discount_percentaje": null
+    },
+    {
+      "id": 21,
+      "image": "https:\/\/lorempixel.com\/640\/480\/?64237",
+      "name": "Corporación Carrillo-Lovato",
+      "price": "30.44",
+      "total_students": 1,
+      "average_score": "2.5714",
+      "number_reviews": 7,
+      "discount_percentaje": null
+    }
+}
+```
 
 ### [Obtener los tutores de un curso](#obtener-los-tutores-de-un-curso)
 
@@ -1174,3 +1276,105 @@ _response_
 }
 }
 ```
+
+
+
+# Comuni
+
+### [Why Use](#why-use)
+
+Nombre: WhyUse
+
+> GET /api/why_use
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "placeholder": "https:\/\/lorempixel.com\/640\/480\/?95741",
+      "name": "Yago Casillas Segundo",
+      "title": "Animi magni explicabo itaque non eligendi consequatur quisquam at ratione aliquid aspernatur id quia fugiat nostrum ut.",
+      "description": "Rerum et ut omnis commodi voluptatem animi sequi laudantium ut officiis possimus laborum architecto totam dolorem quisquam voluptate nihil sed aliquam officiis nesciunt in est molestiae culpa omnis sunt et nobis qui adipisci et animi consequatur voluptatem alias repellat temporibus ipsa nemo quod eum soluta asperiores asperiores eius quos nihil assumenda eos dolor est magnam doloribus non animi ut amet nobis et et ratione optio.",
+      "created_at": "2019-06-10 00:09:53",
+      "updated_at": "2019-06-10 00:09:53"
+    },
+    {
+      "id": 2,
+      "placeholder": "https:\/\/lorempixel.com\/640\/480\/?50321",
+      "name": "Lola Jurado Tercero",
+      "title": "Accusamus amet et vitae deserunt provident est blanditiis aliquam inventore quas facilis modi molestiae quia voluptas.",
+      "description": "Natus a perferendis nostrum facere repellendus est autem numquam repellat iste suscipit iusto eos placeat qui est quis accusamus porro aliquid repellendus nemo magni aut molestiae ut alias animi cupiditate accusantium quia in eum quae esse at harum et reiciendis et architecto ea molestias quia fuga architecto explicabo error vel assumenda qui dolorem enim dolore est aspernatur aliquam incidunt vitae.",
+      "created_at": "2019-06-10 00:09:53",
+      "updated_at": "2019-06-10 00:09:53"
+    },
+    {
+      "id": 3,
+      "placeholder": "https:\/\/lorempixel.com\/640\/480\/?86994",
+      "name": "Dr. Aleix Atencio Tercero",
+      "title": "Praesentium inventore sunt laudantium rerum sed temporibus delectus sapiente nihil culpa id quia veniam quia sapiente possimus eaque quas sed fugiat ea maiores ab eius omnis molestiae exercitationem.",
+      "description": "Autem quos et ut eveniet quam dolorem praesentium debitis minus dolor odio nemo iusto accusantium corrupti veniam sunt voluptatem repellendus qui alias sunt provident sed ut excepturi sed ab qui aliquam tempore consequatur nemo iure in qui voluptatem laudantium et omnis iusto vel eum veritatis eligendi quo ratione.",
+      "created_at": "2019-06-10 00:09:53",
+      "updated_at": "2019-06-10 00:09:53"
+    },
+  ]
+}
+```
+
+
+### [Testimonies](#testimonies)
+
+Nombre: Testimonies
+
+> GET /api/testimonies
+
+_response_
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "placeholder": "https:\/\/lorempixel.com\/640\/480\/?85156",
+      "name": "Lucía Cuellar",
+      "url": "https:\/\/lorempixel.com\/640\/480\/?72848",
+      "description": "Doloremque ipsam reprehenderit sunt adipisci doloribus autem nemo.",
+      "created_at": "2019-06-10 00:09:53",
+      "updated_at": "2019-06-10 00:09:53"
+    },
+    {
+      "id": 2,
+      "placeholder": "https:\/\/lorempixel.com\/640\/480\/?45832",
+      "name": "Pablo Casanova",
+      "url": "https:\/\/lorempixel.com\/640\/480\/?76816",
+      "description": "Molestias dolorem ullam aut minima.",
+      "created_at": "2019-06-10 00:09:53",
+      "updated_at": "2019-06-10 00:09:53"
+    },
+    {
+      "id": 3,
+      "placeholder": "https:\/\/lorempixel.com\/640\/480\/?61516",
+      "name": "Carmen Lara Tercero",
+      "url": "https:\/\/lorempixel.com\/640\/480\/?12750",
+      "description": "Praesentium velit dolores porro vero autem facere explicabo aperiam.",
+      "created_at": "2019-06-10 00:09:53",
+      "updated_at": "2019-06-10 00:09:53"
+    },
+    {
+      "id": 4,
+      "placeholder": "https:\/\/lorempixel.com\/640\/480\/?89176",
+      "name": "Cristian Hernando Hijo",
+      "url": "https:\/\/lorempixel.com\/640\/480\/?40647",
+      "description": "Et aliquam sed officia eos.",
+      "created_at": "2019-06-10 00:09:53",
+      "updated_at": "2019-06-10 00:09:53"
+    },
+  ]
+}
+```
+
+

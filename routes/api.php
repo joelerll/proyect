@@ -32,18 +32,24 @@ Route::get('tutor/course/question/{id}', 'CoursesController@questions');
 Route::get('tutor/course/statistic', 'CoursesController@statistics');
 
 // User Profiles
-Route::get('tutor/profile', 'UserController@get_profile');
-Route::put('tutor/profile', 'UserController@edit_profile');
+Route::get('user/profile', 'UserController@get_profile');
+Route::put('user/profile', 'UserController@edit_profile');
 
-Route::get('tutor/bank_info', 'UserController@get_bank_info');
-Route::post('tutor/bank_info', 'UserController@create_bank_info');
-Route::put('tutor/bank_info/{id}', 'UserController@edit_bank_info');
+Route::get('user/bank_info', 'UserController@get_bank_info');
+Route::post('user/bank_info', 'UserController@create_bank_info');
+Route::put('user/bank_info/{id}', 'UserController@edit_bank_info');
+
+// user profiles
+// Route::get('user/profile', 'UserController@get_profile');
+// Route::put('user/profile', 'UserController@edit_profile');
 
 // Tutor profile
 Route::get('tutor/payments', 'TutorController@payments');
 
-// Client dashboard
-// Client profile
+// Client home
+Route::post('course/interest', 'CoursesController@get_all_by_interest');
+Route::get('tutor/interest/{interest_id}', 'InterestController@get_tutors');
+
 
 // Client Endpoints
 Route::post('client/register', 'ClientController@create');
@@ -79,7 +85,17 @@ Route::get('course/content/{course_id}', 'ContentCourseController@getCourse');
 Route::get('course/tutor/{course_id}', 'TutorController@getTutor');
 
 // video
-Route::get('course/video/{course_id}/duration', 'VideosController@getCourseDuration');
+// Route::get('course/video/{course_id}/duration', 'VideosController@getCourseDuration');
 
 // content
 Route::get('content/{content_id}/duration', 'ContentCourseController@getContentDuration');
+
+// discount
+Route::post('discount', 'DiscountController@create');
+Route::post('discount/{discount_id}/course/{course_id}', 'DiscountController@add_course');
+
+// testimonies
+Route::get('testimonies', 'TestimoniesController@get');
+
+// why use
+Route::get('why_use', 'WhyUseController@get');

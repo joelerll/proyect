@@ -18,7 +18,7 @@ class InterestController extends Controller
 
     public function show(Interest $Interest)
     {
-        return response()->json($Interest->get());
+        return response()->json(["success" => true, "data" => $Interest->get()]);
     }
 
     public function attach_interests(Request $request, User $User, Interest $Interest)
@@ -26,7 +26,7 @@ class InterestController extends Controller
         $user_id = auth()->user()->id;
         $user = $User->where('id', $user_id)->first();
         $interests  = request('interests');
-        return response()->json($user->interest()->sync($interests));
+        return response()->json(["success" => true, "data" => $user->interest()->sync($interests)]);
     }
 
     public function get_client(Request $request, User $User, InterestUser $InterestUser)
@@ -42,6 +42,11 @@ class InterestController extends Controller
                 ->join('course_interests', 'courses.id', 'course_interests.course_id')
                 ->join('interests', 'interests.id', 'course_interests.interest_id')
                 ->groupBy('course_interests.interest_id')->get();
-        return response()->json($courses);
+        return response()->json(["success" => true, "data" => $courses]);
+    }
+
+    public function get_tutors(Course $Course)
+    {
+        return response()->json(["success" => true, "data" => "sad"]);
     }
 }

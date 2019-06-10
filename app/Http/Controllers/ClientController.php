@@ -27,6 +27,6 @@ class ClientController extends Controller
         $user->user_type_id = 1;
         $user->surnames = $bodyContent->surnames;
         $user->save();
-        return response()->json($user);
+        return response()->json(["success" => true, "data" => $user]);
     }
 }

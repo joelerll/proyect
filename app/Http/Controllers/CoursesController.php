@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Course;
 use App\Score;
 use App\User;
+use App\CourseInterest;
 use App\CourseUser;
 use Illuminate\Support\Facades\DB;
 use  Illuminate\Support\Collection;
@@ -29,6 +30,25 @@ class CoursesController extends Controller
 
         $course = $Course->where("id", $course_id)->first();
         return response()->json(["success" => true, "data" => $course]);
+    }
+
+    public function get_all_by_interest(CourseInterest $CourseInterest, Course $Course) {
+        // tiempo total de los videos
+        // nombre tutores
+
+        $interests  = request('interests');
+        $coursesInterest = $CourseInterest->whereIn('interest_id', $interests)->pluck("id")->toArray();
+
+        $total_students_query = '(select count(*) from course_user inner join users on course_user.user_id = users.id where course_user.course_id = courses.id and users.user_type_id = 1) as total_students';
+
+        $average_score = '(select AVG(score) from scores where course_id = courses.id) as average_score';
+
+        $reviews = '(select COUNT(*) from scores where course_id = courses.id) as number_reviews';
+
+        $discounts = '(select course_discounts.percentage from course_discounts where course_discounts.course_id = courses.id) as discount_percentaje';
+
+        $courses = $Course->select("courses.id as id", "courses.image as image", "courses.name as name", "courses.price as price", DB::raw($total_students_query), DB::raw($average_score), DB::raw($reviews), DB::raw($discounts))->whereIn("courses.id", $coursesInterest)->get();
+        return response()->json(["success" => true, "data" => $courses]);
     }
 
     public function getAllByUser()
